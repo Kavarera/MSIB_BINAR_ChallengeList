@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".page.MenuFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_hai_binarian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/hai_binarian"
+            android:textColor="@color/black"
+
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/ib_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/tombol_keranjang"
+            android:src="@drawable/ic_grocery_store"
+            app:layout_constraintEnd_toStartOf="@+id/ib_profile"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toEndOf="@id/tv_hai_binarian"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_profile_user"
+            android:background="@color/transparent"
+            android:contentDescription="@string/tombol_profile"/>
+
+        <TextView
+            android:id="@+id/tv_subsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_hai_binarian"
+            app:layout_constraintStart_toStartOf="@id/tv_hai_binarian"
+            android:text="@string/mau_makan_apa_hari_ini"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:id="@+id/ll_kategoriFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="17dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tv_subsTitle">
+
+            <FrameLayout
+                android:id="@+id/fl_banner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/food_background"
+                android:layout_marginTop="40dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/blackHalfOp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_disc30"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:src="@mipmap/discount_30"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.078" />
+
+                    <TextView
+                        android:id="@+id/tv_disc30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/discount_30"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/iv_disc30"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tv_disc30"
+                        app:layout_constraintStart_toStartOf="@id/tv_disc30"
+                        android:text="@string/pesan_makanan_dengan_aplikasi_dan_dapatkan_diskonmu"
+                        android:textColor="@color/white"
+                        android:paddingRight="170dp"
+                        android:layout_marginTop="15dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <HorizontalScrollView
+                android:layout_marginTop="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@color/black"
+                        android:layout_marginRight="10dp"/>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="22dp"
+            android:paddingHorizontal="17dp"
+            app:layout_constraintTop_toBottomOf="@id/ll_kategoriFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/list_menu_makanan"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_gridOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_list"
+                android:background="@color/transparent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu_makanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ib_gridOption"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Challenge2</string>
+    <string name="hai_binarian">Hai Binarian</string>
+    <string name="mau_makan_apa_hari_ini">Mau makan apa hari ini?</string>
+    <string name="diskon_30">Diskon 30%</string>
+    <string name="pesan_makanan_lewat_aplikasi_dan_dapatkan_diskonmu">Pesan makanan lewat aplikasi dan dapatkan diskonmu</string>
+    <string name="item_menu_makanan">item menu makanan</string>
+    <string name="list_menu_makanan">List Menu Makanan</string>
+    <string name="gambar_makanan">gambar makanan</string>
+    <string name="food_price">food price</string>
+</resources>
