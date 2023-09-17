@@ -14,6 +14,7 @@ import com.example.challenge3.adapters.MainMenuRVAdapter
 import com.example.challenge3.databinding.FragmentMenuBinding
 import com.example.challenge3.models.Food
 import com.example.challenge3.models.RecyclerViewOption
+import kotlin.random.Random
 
 class MenuFragment : Fragment() {
 
@@ -23,12 +24,14 @@ class MenuFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        for(i in 1..20){
+        for(a in 1..20){
+
             val food = Food(
-                "Food Name $i", // Nama makanan
-                "Description for Food $i", // Deskripsi makanan
-                R.color.purple_200, // ID gambar makanan (ganti dengan ID gambar yang sesuai)
-                "Location for Food $i" // Lokasi makanan
+                "Food Name $a", // Nama makanan
+                "Description for Food $a", // Deskripsi makanan
+                resources.obtainTypedArray(R.array.foto_makanan).getResourceId(Random.Default.nextInt(1,13),0), // ID gambar makanan (ganti dengan ID gambar yang sesuai)
+                "Rp. ${Random.Default.nextInt(5000,50000)}",
+                "Location for Food $a" // Lokasi makanan
             )
             foodList.add(food)
         }
@@ -41,6 +44,12 @@ class MenuFragment : Fragment() {
         val rv = binding.rvMenuMakanan
         rv.layoutManager = LinearLayoutManager(requireContext())
         var adapter = MainMenuRVAdapter(foodList,RecyclerViewOption.LINEAR_LAYOUT)
+        adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
+            override fun onItemClicked(data: Food) {
+                Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+            }
+
+        })
         rv.adapter=adapter
 
         binding.ibGridOption.setOnClickListener {
@@ -50,6 +59,12 @@ class MenuFragment : Fragment() {
                 rv.layoutManager = GridLayoutManager(requireContext(),2)
                 adapter = MainMenuRVAdapter(foodList,RecyclerViewOption.GRID_LAYOUT)
                 adapter.switchRvMode(RecyclerViewOption.GRID_LAYOUT)
+                adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
+                    override fun onItemClicked(data: Food) {
+                        Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+                    }
+
+                })
                 rv.adapter=adapter
                 Toast.makeText(requireContext(),"change to grid",Toast.LENGTH_SHORT).show()
             }
@@ -59,9 +74,17 @@ class MenuFragment : Fragment() {
                 rv.layoutManager = LinearLayoutManager(requireContext())
                 adapter = MainMenuRVAdapter(foodList,RecyclerViewOption.LINEAR_LAYOUT)
                 adapter.switchRvMode(RecyclerViewOption.LINEAR_LAYOUT)
+                adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
+                    override fun onItemClicked(data: Food) {
+                        Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+                    }
+
+                })
                 rv.adapter=adapter
             }
         }
+
+
         return binding.root
     }
 

@@ -8,8 +8,11 @@
         android:id="@+id/iv_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:maxHeight="80dp"
+        android:maxWidth="80dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="centerCrop"
         android:src="@color/teal_200" />
     <TextView
         android:id="@+id/tv_namaFood"

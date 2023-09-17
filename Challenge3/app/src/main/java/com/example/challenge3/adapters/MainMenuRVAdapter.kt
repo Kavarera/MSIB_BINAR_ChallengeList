@@ -2,10 +2,7 @@ package com.example.challenge3.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challenge3.databinding.FoodGridBinding
 import com.example.challenge3.databinding.FoodLinearBinding
@@ -13,18 +10,26 @@ import com.example.challenge3.models.Food
 import com.example.challenge3.models.RecyclerViewOption
 
 class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerViewOption):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private lateinit var onItemClickCallback:IonItemClickCallback
+    interface IonItemClickCallback {
+        fun onItemClicked(data: Food)
+    }
+
     inner class MainMenuLinearHolder(private val binding: FoodLinearBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Food){
-            val image: ImageView = binding.ivImage
-            val tvName: TextView =binding.tvNamaFood
-            val tvHarga: TextView =binding.tvHarga
+            binding.ivImage.setImageResource(item.imageId)
+            binding.tvNamaFood.text=item.Name
+            binding.tvHarga.text=item.Price
+            Log.e("ui","apply ui in linearHolder")
         }
     }
     inner class MainMenuGridHolder(private val binding:FoodGridBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item:Food){
-            val image: ImageView = binding.tvGimage
-            val tvName: TextView =binding.tvGnamaFood
-            val tvHarga: TextView =binding.tvGharga
+            binding.tvGimage.setImageResource(item.imageId)
+            binding.tvGnamaFood.text=item.Name
+            binding.tvGharga.text=item.Price
+            Log.e("ui","apply ui in gridHolder")
         }
     }
 
@@ -39,7 +44,14 @@ class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerView
         }
     }
 
+    fun setOnItemClickCallback(onItemClickCallback: IonItemClickCallback){
+        this.onItemClickCallback=onItemClickCallback
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(foods[holder.adapterPosition])
+        }
         when (holder.itemViewType) {
             VIEW_TYPE_LINEAR -> {
 
@@ -52,6 +64,7 @@ class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerView
                 (holder as MainMenuGridHolder).bind(item)
             }
         }
+
     }
 
     override fun getItemCount(): Int {

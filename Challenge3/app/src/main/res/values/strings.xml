@@ -12,4 +12,32 @@
     <string name="nama_makanan">Nama Makanan</string>
     <string name="harga">Harga</string>
     <string name="deskripsi_foto">deskripsi foto</string>
+    <string name="food_price">Food Price</string>
+    <string name="food_name">Food Name</string>
+    <string name="ini_adalah_deskripsi_makanan_yang_begini_begini_saja">Ini adalah deskripsi makanan yang begini begini saja</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="jl_toko_lokasi_ini_adalah_toko_nya_alamat_wlalfeamgmaegmae">Jl. Toko Lokasi ini adalah toko nya alamat wlalfeamgmaegmae</string>
+    <string name="add">+</string>
+    <string name="_1">1</string>
+    <string name="subtract">-</string>
+    <string name="tambah_ke_keranjang_harga">Tambah Ke Keranjang - Harga</string>
+
+    <integer-array name="foto_makanan">
+        <item>@drawable/ayam</item>
+        <item>@drawable/ayam2</item>
+        <item>@drawable/ayam3</item>
+        <item>@drawable/ayam4</item>
+        <item>@drawable/bakar</item>
+        <item>@drawable/burger</item>
+        <item>@drawable/pizza</item>
+        <item>@drawable/pizza2</item>
+        <item>@drawable/kopi</item>
+        <item>@drawable/kopi2</item>
+        <item>@drawable/miegacoan</item>
+        <item>@drawable/mie</item>
+        <item>@drawable/sushi</item>
+
+    </integer-array>
+
+
 </resources>

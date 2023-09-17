@@ -7,25 +7,24 @@ data class Food(
     var Name:String?,
     var description:String?,
     val imageId:Int,
+    val Price:String?,
     val location:String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readInt(),
+        parcel.readString(),
         parcel.readString()
     ) {
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(Name)
-        parcel.writeString(description)
-        parcel.writeInt(imageId)
-        parcel.writeString(location)
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
     }
 
-    override fun describeContents(): Int {
-        return 0
+    override fun writeToParcel(p0: Parcel, p1: Int) {
+        TODO("Not yet implemented")
     }
 
     companion object CREATOR : Parcelable.Creator<Food> {
