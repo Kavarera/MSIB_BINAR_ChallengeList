@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".FoodDetailFragment">
     <FrameLayout
+        android:id="@+id/fl_food_detail_image"
         android:layout_width="match_parent"
         android:layout_height="225dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
             android:textColor="@color/black"
             />
         <TextView
+            android:id="@+id/tv_food_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -65,6 +67,7 @@
         android:layout_marginTop="50dp"
         app:dividerColor="@color/grey"/>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_lokasi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="25dp"
@@ -91,10 +94,13 @@
             android:textSize="30sp"
             />
         <TextView
+            android:id="@+id/tv_lokasi_detail"
             android:layout_width="wrap_content"
+            android:maxWidth="280dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_Lokasi"
             app:layout_constraintStart_toStartOf="@id/tv_Lokasi"
+            android:paddingEnd="15dp"
             android:textColor="@color/black"
             android:text="@string/jl_toko_lokasi_ini_adalah_toko_nya_alamat_wlalfeamgmaegmae"/>
 

@@ -26,14 +26,12 @@
             android:id="@+id/ib_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="212dp"
             android:layout_marginTop="16dp"
             android:background="@color/transparent"
             android:contentDescription="@string/tombol_keranjang"
             android:src="@drawable/ic_grocery_store"
-            app:layout_constraintEnd_toStartOf="@+id/ib_profile"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toEndOf="@id/tv_hai_binarian"
+            app:layout_constraintEnd_toStartOf="@id/ib_profile"
+            android:layout_marginRight="25dp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
@@ -129,30 +127,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@color/black"
-                        android:layout_marginRight="10dp"/>
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@color/black"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@color/black"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@color/black"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <include android:id="@+id/incl1" layout="@layout/food_kategori"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="wrap_content"/>
+                    <include android:id="@+id/incl2" layout="@layout/food_kategori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"/>
+                    <include android:id="@+id/incl3" layout="@layout/food_kategori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"/>
+                    <include android:id="@+id/incl4" layout="@layout/food_kategori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>

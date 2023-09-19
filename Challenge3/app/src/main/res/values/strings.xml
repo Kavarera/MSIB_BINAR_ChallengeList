@@ -9,7 +9,7 @@
     <string name="pesan_makanan_dengan_aplikasi_dan_dapatkan_diskonmu">Pesan Makanan dengan aplikasi dan dapatkan diskonmu</string>
     <string name="discount_30">Discount 30%</string>
     <string name="list_menu_makanan">List Menu Makanan</string>
-    <string name="nama_makanan">Nama Makanan</string>
+    <string name="nama_makanan">Nama</string>
     <string name="harga">Harga</string>
     <string name="deskripsi_foto">deskripsi foto</string>
     <string name="food_price">Food Price</string>
@@ -36,8 +36,15 @@
         <item>@drawable/miegacoan</item>
         <item>@drawable/mie</item>
         <item>@drawable/sushi</item>
-
     </integer-array>
+    <string-array name="gmaps_url">
+        <item>https://maps.app.goo.gl/KggSzrdZ77yXWCmd7</item>
+        <item>https://maps.app.goo.gl/FVf28uYBDgUZbPc96</item>
+        <item>https://maps.app.goo.gl/beVfSSERa9G96DZi6</item>
+        <item>https://maps.app.goo.gl/VDuSyK3BFdvuy9Wt8</item>
+        <item>https://maps.app.goo.gl/1vQ47BCFPua9bu6f8</item>
+        <item>https://maps.app.goo.gl/aHu3oxmB5h5efko77</item>
+    </string-array>
 
 
 </resources>

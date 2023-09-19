@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge3.R
@@ -31,7 +33,8 @@ class MenuFragment : Fragment() {
                 "Description for Food $a", // Deskripsi makanan
                 resources.obtainTypedArray(R.array.foto_makanan).getResourceId(Random.Default.nextInt(1,13),0), // ID gambar makanan (ganti dengan ID gambar yang sesuai)
                 "Rp. ${Random.Default.nextInt(5000,50000)}",
-                "Location for Food $a" // Lokasi makanan
+                "St. Somewhere number 123, Click for more",
+                resources.obtainTypedArray(R.array.gmaps_url).getString(Random.Default.nextInt(1,6)).toString()// Lokasi makanan
             )
             foodList.add(food)
         }
@@ -40,13 +43,17 @@ class MenuFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentMenuBinding.inflate(inflater,container,false)
-
         val rv = binding.rvMenuMakanan
         rv.layoutManager = LinearLayoutManager(requireContext())
+
         var adapter = MainMenuRVAdapter(foodList,RecyclerViewOption.LINEAR_LAYOUT)
         adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
             override fun onItemClicked(data: Food) {
-                Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+                val mb = Bundle().apply {
+                    putParcelable("data",data)
+                }
+//                Log.d("df2","Kirim data food ${data}")
+                findNavController().navigate(R.id.action_menuFragment_to_foodDetailFragment,mb)
             }
 
         })
@@ -61,7 +68,11 @@ class MenuFragment : Fragment() {
                 adapter.switchRvMode(RecyclerViewOption.GRID_LAYOUT)
                 adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
                     override fun onItemClicked(data: Food) {
-                        Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+                        val mb = Bundle().apply {
+                            putParcelable("data",data)
+                        }
+                        it.findNavController().navigate(R.id.action_menuFragment_to_foodDetailFragment,mb)
+//                        it.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToFoodDetailFragment())
                     }
 
                 })
@@ -76,16 +87,33 @@ class MenuFragment : Fragment() {
                 adapter.switchRvMode(RecyclerViewOption.LINEAR_LAYOUT)
                 adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
                     override fun onItemClicked(data: Food) {
-                        Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
+                        val mb = Bundle().apply {
+                            putParcelable("data",data)
+                        }
+                        it.findNavController().navigate(R.id.action_menuFragment_to_foodDetailFragment,mb)
+//                        it.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToFoodDetailFragment())
                     }
 
                 })
                 rv.adapter=adapter
             }
         }
+        binding.incl1.ivItem.setImageResource(R.drawable.ayam2)
+        binding.incl1.tvNamaFood.text="Ayam"
 
+        binding.incl2.ivItem.setImageResource(R.drawable.burger)
+        binding.incl2.tvNamaFood.text="Burger"
 
+        binding.incl3.ivItem.setImageResource(R.drawable.dimsum)
+        binding.incl3.tvNamaFood.text="Dimsum"
+
+        binding.incl4.ivItem.setImageResource(R.drawable.eskrim)
+        binding.incl4.tvNamaFood.text="Es Krim"
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 
