@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".FoodDetailFragment">
+    tools:context=".page.FoodDetailFragment">
     <FrameLayout
         android:id="@+id/fl_food_detail_image"
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/teal_200">
         <ImageButton
+            android:id="@+id/ib_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_chevron_left_24"
@@ -122,12 +123,14 @@
             android:orientation="horizontal"
             android:gravity="center">
             <Button
+                android:id="@+id/btn_sub_item"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@color/transparent"
                 android:text="@string/subtract"
                 android:textColor="@color/black"/>
             <TextView
+                android:id="@+id/tv_total_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_1"
@@ -135,6 +138,7 @@
                 android:paddingHorizontal="15dp"/>
 
             <Button
+                android:id="@+id/btn_add_item"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@color/transparent"

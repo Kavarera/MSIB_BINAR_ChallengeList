@@ -32,7 +32,7 @@ class MenuFragment : Fragment() {
                 "Food Name $a", // Nama makanan
                 "Description for Food $a", // Deskripsi makanan
                 resources.obtainTypedArray(R.array.foto_makanan).getResourceId(Random.Default.nextInt(1,13),0), // ID gambar makanan (ganti dengan ID gambar yang sesuai)
-                "Rp. ${Random.Default.nextInt(5000,50000)}",
+                "${Random.Default.nextInt(5000,50000)}",
                 "St. Somewhere number 123, Click for more",
                 resources.obtainTypedArray(R.array.gmaps_url).getString(Random.Default.nextInt(1,6)).toString()// Lokasi makanan
             )
