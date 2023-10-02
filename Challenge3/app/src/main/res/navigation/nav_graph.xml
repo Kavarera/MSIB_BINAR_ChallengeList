@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_menuFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_menuFragment_self"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"
@@ -22,4 +28,9 @@
             android:name="data"
             app:argType="com.example.challenge3.models.Food" />
     </fragment>
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.challenge3.page.KeranjangFragment"
+        android:label="fragment_keranjang"
+        tools:layout="@layout/fragment_keranjang" />
 </navigation>

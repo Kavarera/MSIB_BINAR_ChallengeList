@@ -72,7 +72,6 @@ class MenuFragment : Fragment() {
                             putParcelable("data",data)
                         }
                         it.findNavController().navigate(R.id.action_menuFragment_to_foodDetailFragment,mb)
-//                        it.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToFoodDetailFragment())
                     }
 
                 })
@@ -91,24 +90,23 @@ class MenuFragment : Fragment() {
                             putParcelable("data",data)
                         }
                         it.findNavController().navigate(R.id.action_menuFragment_to_foodDetailFragment,mb)
-//                        it.findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToFoodDetailFragment())
                     }
 
                 })
                 rv.adapter=adapter
             }
         }
-        binding.incl1.ivItem.setImageResource(R.drawable.ayam2)
-        binding.incl1.tvNamaFood.text="Ayam"
+        binding.incl1.incl11.ivItem.setImageResource(R.drawable.ayam2)
+        binding.incl1.incl11.tvNamaFood.text="Ayam"
 
-        binding.incl2.ivItem.setImageResource(R.drawable.burger)
-        binding.incl2.tvNamaFood.text="Burger"
+        binding.incl1.incl12.ivItem.setImageResource(R.drawable.burger)
+        binding.incl1.incl12.tvNamaFood.text="Burger"
 
-        binding.incl3.ivItem.setImageResource(R.drawable.dimsum)
-        binding.incl3.tvNamaFood.text="Dimsum"
+        binding.incl1.incl13.ivItem.setImageResource(R.drawable.dimsum)
+        binding.incl1.incl13.tvNamaFood.text="Dimsum"
 
-        binding.incl4.ivItem.setImageResource(R.drawable.eskrim)
-        binding.incl4.tvNamaFood.text="Es Krim"
+        binding.incl1.incl14.ivItem.setImageResource(R.drawable.eskrim)
+        binding.incl1.incl14.tvNamaFood.text="Es Krim"
         return binding.root
     }
 
