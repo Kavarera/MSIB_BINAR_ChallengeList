@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item android:title="@string/home"
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_baseline_home_24"/>
-    <item android:title="Keranjang"
+    <item android:title="@string/keranjang"
         android:id="@+id/nav_keranjang"
         android:icon="@drawable/ic_grocery_store"/>
-    <item android:title="Profile"
+    <item android:title="@string/riwayat"
+        android:id="@+id/nav_riwayat"
+        android:icon="@drawable/ic_baseline_history_24"/>
+    <item android:title="@string/profile"
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile_user"/>
 </menu>

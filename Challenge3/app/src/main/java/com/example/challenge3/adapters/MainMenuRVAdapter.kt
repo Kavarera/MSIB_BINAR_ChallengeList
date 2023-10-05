@@ -33,16 +33,7 @@ class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerView
         }
     }
 
-    private var rvMode = RecyclerViewOption.LINEAR_LAYOUT
-
-    fun switchRvMode(mode:RecyclerViewOption) {
-        return if(mode==RecyclerViewOption.LINEAR_LAYOUT){
-            rvMode=RecyclerViewOption.LINEAR_LAYOUT
-        }
-        else{
-            rvMode=RecyclerViewOption.GRID_LAYOUT
-        }
-    }
+    private var rvMode = layoutManager
 
     fun setOnItemClickCallback(onItemClickCallback: IonItemClickCallback){
         this.onItemClickCallback=onItemClickCallback

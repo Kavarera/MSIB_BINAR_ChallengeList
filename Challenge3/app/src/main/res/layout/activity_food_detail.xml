@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.FoodDetailActivity">
+
+
+    <FrameLayout
+        android:id="@+id/fl_food_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/teal_200">
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            android:background="@color/transparent"
+            />
+    </FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:id="@+id/tv_foodNameDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_name"
+            android:textSize="21dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tv_food_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/food_price"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="21dp"/>
+        <TextView
+            android:id="@+id/tv_fooddesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="380dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_foodNameDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text="@string/ini_adalah_deskripsi_makanan_yang_begini_begini_saja"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_detail"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="50dp"
+        app:dividerColor="@color/grey"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_lokasi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <ImageView
+            android:id="@+id/iv_logostore"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_baseline_storefront_24"
+            />
+        <TextView
+            android:id="@+id/tv_Lokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_logostore"
+            android:text="@string/lokasi"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            />
+        <TextView
+            android:id="@+id/tv_lokasi_detail"
+            android:layout_width="wrap_content"
+            android:maxWidth="280dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_Lokasi"
+            app:layout_constraintStart_toStartOf="@id/tv_Lokasi"
+            android:paddingEnd="15dp"
+            android:textColor="@color/black"
+            android:text="@string/jl_toko_lokasi_ini_adalah_toko_nya_alamat_wlalfeamgmaegmae"/>
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="10dp"
+            android:paddingVertical="18dp"
+            android:text="@string/tambah_ke_keranjang_harga"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/btn_add_to_cart"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_sub_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:text="@string/subtract"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tv_total_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_1"
+                android:textColor="@color/black"
+                android:paddingHorizontal="15dp"/>
+
+            <Button
+                android:id="@+id/btn_add_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:text="@string/add"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

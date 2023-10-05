@@ -21,21 +21,44 @@
     <string name="_1">1</string>
     <string name="subtract">-</string>
     <string name="tambah_ke_keranjang_harga">Tambah Ke Keranjang - Harga</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="profile">Profile</string>
+    <string name="keranjang">Keranjang</string>
+    <string name="home">Home</string>
+    <string name="tv_keranjang">Keranjang</string>
+    <string name="contohHarga">Rp. 10.000</string>
+    <string name="catatan">Catatan:</string>
+    <string name="tv_riwayat">Riwayat</string>
+    <string name="pesan">Pesan</string>
+    <string name="total_harga">Total Harga</string>
+    <string name="tv_profile">Profile</string>
+    <string name="no_telepon">No. Telepon</string>
+    <string name="contoh_no_telepon">+62 878-0989-2132</string>
+    <string name="contoh_email">user@example.com</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="kavarera">kavarera</string>
+    <string name="username">Username</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="cancel_editing">cancel editing</string>
+    <string name="button_for_change_list_layout">button for change list layout</string>
+    <string name="button_for_turn_on_edit_mode">button for turn on edit mode</string>
 
     <integer-array name="foto_makanan">
-        <item>@drawable/ayam</item>
-        <item>@drawable/ayam2</item>
-        <item>@drawable/ayam3</item>
-        <item>@drawable/ayam4</item>
-        <item>@drawable/bakar</item>
-        <item>@drawable/burger</item>
-        <item>@drawable/pizza</item>
-        <item>@drawable/pizza2</item>
-        <item>@drawable/kopi</item>
-        <item>@drawable/kopi2</item>
-        <item>@drawable/miegacoan</item>
-        <item>@drawable/mie</item>
-        <item>@drawable/sushi</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
     </integer-array>
     <string-array name="gmaps_url">
         <item>https://maps.app.goo.gl/KggSzrdZ77yXWCmd7</item>

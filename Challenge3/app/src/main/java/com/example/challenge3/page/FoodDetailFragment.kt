@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.challenge3.MainActivity
 import com.example.challenge3.databinding.FragmentFoodDetailBinding
 import com.example.challenge3.models.Food
 import com.example.challenge3.viewmodels.FoodDetailViewModel
