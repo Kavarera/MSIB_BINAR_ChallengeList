@@ -11,7 +11,7 @@ import com.example.challenge3.models.FoodKeranjang
 @Database(entities = [FoodKeranjang::class], version = 1)
 abstract class DatabaseApp:RoomDatabase() {
 
-    abstract fun foodKeranjang():IFoodKeranjangDao
+    abstract fun keranjangPesananDao():IFoodKeranjangDao
 
     companion object{
         @Volatile
@@ -26,8 +26,6 @@ abstract class DatabaseApp:RoomDatabase() {
             }
             return INSTANCE as DatabaseApp
         }
-        fun destroyInstance(){
-            INSTANCE=null
-        }
+
     }
 }

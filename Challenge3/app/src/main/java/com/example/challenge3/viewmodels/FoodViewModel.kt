@@ -12,7 +12,7 @@ class FoodViewModel(private val application: Application):ViewModel() {
     private val foodKeranjangDao:IFoodKeranjangDao
     init {
         val db = DatabaseApp.getDatabase(application)
-        foodKeranjangDao=db.foo
+        foodKeranjangDao=db
     }
     val allFoods:LiveData<List<FoodKeranjang>> = foodKeranjangDao.getAllPesanan()
 
