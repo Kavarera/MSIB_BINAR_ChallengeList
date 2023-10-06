@@ -75,7 +75,7 @@
         android:id="@+id/btn_min_item_keranjang"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="+"
+        android:text="-"
         app:layout_constraintBottom_toTopOf="@id/et_catatan_item_pesanan_keranjang"
         app:layout_constraintEnd_toStartOf="@id/tv_total_item_pesanan_keranjang"
         android:layout_marginEnd="15dp"

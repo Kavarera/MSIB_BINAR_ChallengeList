@@ -17,7 +17,7 @@ abstract class DatabaseApp:RoomDatabase() {
         @Volatile
         private var INSTANCE:DatabaseApp? = null
         @JvmStatic
-        fun getDatabase(context:Context):RoomDatabase{
+        fun getDatabase(context:Context):DatabaseApp{
             if(INSTANCE==null){
                 synchronized(DatabaseApp::class.java){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,

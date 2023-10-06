@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.challenge3.viewmodels.FoodViewModel
+import com.example.challenge3.viewmodels.KonfirmasiPesananViewModel
 import com.example.challenge3.viewmodels.MainActivityViewModel
 
 
@@ -12,6 +13,9 @@ class ViewModelFactory(private val application: Application ) : ViewModelProvide
     override fun<T:ViewModel> create(modelClass: Class<T>):T{
         if(modelClass.isAssignableFrom(FoodViewModel::class.java)){
             return FoodViewModel(application) as T
+        }
+        if(modelClass.isAssignableFrom(KonfirmasiPesananViewModel::class.java)){
+            return KonfirmasiPesananViewModel(application) as T
         }
         throw IllegalArgumentException("Unknow ViewModel Class")
     }

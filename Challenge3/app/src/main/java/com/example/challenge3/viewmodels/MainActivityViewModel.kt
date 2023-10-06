@@ -13,9 +13,11 @@ class MainActivityViewModel():ViewModel() {
 
     private val _currentFragment = MutableLiveData<EnumListFragment>()
     val currentFragment:LiveData<EnumListFragment> get() = _currentFragment
-
-
-
+    private val _bottomNavStat = MutableLiveData<Boolean>()
+    val bottomNavStat:LiveData<Boolean> get()= _bottomNavStat
+    fun setVisibleBottomNav(stat:Boolean){
+        _bottomNavStat.postValue(stat)
+    }
 
     fun switchFragment(fragmentId: EnumListFragment){
         Log.d("Nav","ViewModel LiveData Change to ${fragmentId.name}")

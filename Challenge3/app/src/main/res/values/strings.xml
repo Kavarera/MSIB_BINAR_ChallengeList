@@ -44,6 +44,12 @@
     <string name="cancel_editing">cancel editing</string>
     <string name="button_for_change_list_layout">button for change list layout</string>
     <string name="button_for_turn_on_edit_mode">button for turn on edit mode</string>
+    <string name="konfirmasi_pesanan">Konfirmasi Pesanan</string>
+    <string name="metode_pengiriman">Metode Pengiriman</string>
+    <string name="ambil_sendiri">Ambil Sendiri</string>
+    <string name="dikirim">Dikirim</string>
+    <string name="tunai">Tunai</string>
+    <string name="pesanan_berhasil">PESANAN BERHASIL</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>

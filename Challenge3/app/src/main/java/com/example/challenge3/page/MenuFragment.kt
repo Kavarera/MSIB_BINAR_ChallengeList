@@ -27,7 +27,7 @@ import kotlin.random.Random
 
 class MenuFragment : Fragment() {
     //viewmodel
-    private lateinit var sharedViewModel:MainActivityViewModel
+//    private lateinit var sharedViewModel:MainActivityViewModel
 
 
     private lateinit var binding:FragmentMenuBinding

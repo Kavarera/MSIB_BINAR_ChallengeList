@@ -3,6 +3,7 @@ package com.example.challenge3
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -19,10 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = this.findNavController(R.id.fragContainer)
@@ -38,10 +35,7 @@ class MainActivity : AppCompatActivity() {
 //                    navController.navigate(R.id.action_menuFragment_to_keranjangFragment)
                     true
                 }
-                R.id.nav_riwayat->{
-                    viewModel.switchFragment(EnumListFragment.RIWAYAT)
-                    true
-                }
+
                 R.id.nav_profile->{
                     viewModel.switchFragment(EnumListFragment.PROFILE)
                     true
@@ -52,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.currentFragment.observe(this) { fragmentId ->
             switchToFragment(fragmentId)
 
+        }
+        viewModel.bottomNavStat.observe(this){ visibility->
+            if(visibility){
+                binding.bottomNavBar.visibility=View.VISIBLE
+            }
+            else{
+                binding.bottomNavBar.visibility=View.GONE
+            }
         }
 
     }
@@ -66,14 +68,12 @@ class MainActivity : AppCompatActivity() {
                 navController.popBackStack()
                 navController.navigate(R.id.keranjangFragment,null)
             }
-            EnumListFragment.RIWAYAT->{
-                navController.popBackStack()
-                navController.navigate(R.id.riwayatFragment,null)
-            }
+
             EnumListFragment.PROFILE->{
                 navController.popBackStack()
                 navController.navigate(R.id.profileFragment,null)
             }
+            else -> Log.d("nav","No Fragment")
         }
         //supportFragmentManager.beginTransaction().replace(R.id.fragContainer,fragment).commit()
         Log.d("Nav","Switch Fragment To ${fragment.javaClass.simpleName}")

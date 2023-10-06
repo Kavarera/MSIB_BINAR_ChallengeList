@@ -36,6 +36,9 @@
         android:label="fragment_keranjang"
         tools:layout="@layout/fragment_keranjang" >
 
+        <action
+            android:id="@+id/action_keranjangFragment_to_konfirmasiPesananFragment"
+            app:destination="@id/konfirmasiPesananFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -46,11 +49,6 @@
             android:id="@+id/action_profileFragment_to_profileEditActivity"
             app:destination="@id/profileEditActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/riwayatFragment"
-        android:name="com.example.challenge3.page.RiwayatFragment"
-        android:label="fragment_riwayat"
-        tools:layout="@layout/fragment_riwayat" />
     <activity
         android:id="@+id/profileEditActivity"
         android:name="com.example.challenge3.activity.ProfileEditActivity"
@@ -61,4 +59,9 @@
         android:name="com.example.challenge3.activity.FoodDetailActivity"
         android:label="activity_food_detail"
         tools:layout="@layout/activity_food_detail" />
+    <fragment
+        android:id="@+id/konfirmasiPesananFragment"
+        android:name="com.example.challenge3.page.KonfirmasiPesananFragment"
+        android:label="fragment_konfirmasi_pesanan"
+        tools:layout="@layout/fragment_konfirmasi_pesanan" />
 </navigation>

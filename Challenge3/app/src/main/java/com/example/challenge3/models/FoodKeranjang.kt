@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "food_keranjang")
 @Parcelize
 data class FoodKeranjang(
-    @PrimaryKey(autoGenerate = true) var id:Int,
+    @PrimaryKey(autoGenerate = true) var id:Int=0,
     @ColumnInfo(name="food_name") var foodName:String,
     @ColumnInfo(name="image_id") var imageID:Int,
     @ColumnInfo(name="food_harga") var foodPrice:Int,
