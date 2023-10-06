@@ -137,6 +137,7 @@ class KonfirmasiPesananFragment : Fragment() {
         }
         binding.btnCheckout.setOnClickListener {
             DialogPesananBerhasil().show(requireActivity().supportFragmentManager,"dialogPesananBerhasil")
+            foodViewModel.deleteAllFoods()
         }
 
 
