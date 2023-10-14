@@ -16,7 +16,6 @@ import com.example.challenge3.viewmodels.MainActivityViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainActivityViewModel>()
-//    private lateinit var viewModel:MainActivityViewModel
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavBar.visibility=View.GONE
             }
         }
+        navController.popBackStack()
+        navController.navigate(R.id.loginFragment)
 
     }
 
@@ -73,10 +74,9 @@ class MainActivity : AppCompatActivity() {
                 navController.popBackStack()
                 navController.navigate(R.id.profileFragment,null)
             }
-            else -> Log.d("nav","No Fragment")
+            else -> println("Error No Fragment")
         }
         //supportFragmentManager.beginTransaction().replace(R.id.fragContainer,fragment).commit()
-        Log.d("Nav","Switch Fragment To ${fragment.javaClass.simpleName}")
     }
 
 }

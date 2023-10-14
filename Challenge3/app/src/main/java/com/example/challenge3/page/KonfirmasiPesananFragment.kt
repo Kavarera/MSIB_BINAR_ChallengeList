@@ -76,7 +76,6 @@ class KonfirmasiPesananFragment : Fragment() {
         pengiriman = keranjangViewModel.tipePengiriman()
 
         pembayaran.observe(viewLifecycleOwner){
-            Log.d("konfirmasipesanan","nilai pembayaran = ${it}")
             if(it==EnumMetodePembayaran.TUNAI){
                 binding.btnTunai.backgroundTintList= ColorStateList
                     .valueOf(ContextCompat
@@ -122,11 +121,9 @@ class KonfirmasiPesananFragment : Fragment() {
         }
         binding.btnTunai.setOnClickListener {
             keranjangViewModel.switchMetodePembayaran(EnumMetodePembayaran.TUNAI)
-            Log.d("konfirmasipesanan","Switched metode pembayaran to ${pembayaran.value}")
         }
         binding.btnDompetDigital.setOnClickListener {
             keranjangViewModel.switchMetodePembayaran(EnumMetodePembayaran.DOMPET_DIGITAL)
-            Log.d("konfirmasipesanan","Switched metode pembayaran to ${pembayaran.value}")
         }
 
         binding.btnDikirim.setOnClickListener {

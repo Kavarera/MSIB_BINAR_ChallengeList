@@ -78,7 +78,6 @@ class MenuFragment : Fragment() {
 //                    putParcelable("data",data)
 //                }
                 val mb = bundleOf("foodData" to data)
-//                Log.d("df2","Kirim data food ${data}")
                 findNavController().navigate(R.id.action_menuFragment_to_foodDetailActivity,mb)
             }
 

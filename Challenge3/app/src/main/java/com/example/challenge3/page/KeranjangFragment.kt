@@ -1,5 +1,6 @@
 package com.example.challenge3.page
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,7 +30,6 @@ class KeranjangFragment : Fragment() {
         val viewModelFactory = ViewModelFactory(requireActivity().application)
         foodViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(FoodViewModel::class.java)
         listPesanan=foodViewModel.getAllFoods()
-        Log.d("keranjang","list of pesanan ${listPesanan.value}")
     }
 
     override fun onCreateView(
@@ -40,6 +40,21 @@ class KeranjangFragment : Fragment() {
         val recyclerView = binding.rvKeranjang
         listPesanan = foodViewModel.getAllFoods()
         listPesanan.observe(viewLifecycleOwner){item->
+
+            if(item.size==0){
+                recyclerView.visibility=View.GONE
+                binding.tvTotalHarga.visibility=View.GONE
+                binding.tvTotalHargaPesanan.visibility=View.GONE
+                binding.btnPesan.visibility=View.GONE
+                binding.ivEmptyCart.visibility=View.VISIBLE
+                return@observe
+            }
+            binding.tvTotalHarga.visibility=View.VISIBLE
+            binding.tvTotalHargaPesanan.visibility=View.VISIBLE
+            binding.btnPesan.visibility=View.VISIBLE
+            recyclerView.visibility=View.VISIBLE
+            binding.ivEmptyCart.visibility=View.GONE
+
             var totalPrice:Int = 0
             item.forEach {
                 var t =0

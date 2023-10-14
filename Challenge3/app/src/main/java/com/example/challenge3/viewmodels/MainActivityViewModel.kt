@@ -20,7 +20,6 @@ class MainActivityViewModel():ViewModel() {
     }
 
     fun switchFragment(fragmentId: EnumListFragment){
-        Log.d("Nav","ViewModel LiveData Change to ${fragmentId.name}")
         when(fragmentId){
             EnumListFragment.HOME-> _currentFragment.value = EnumListFragment.HOME
             EnumListFragment.KERANJANG -> _currentFragment.value = EnumListFragment.KERANJANG

@@ -50,6 +50,11 @@
     <string name="dikirim">Dikirim</string>
     <string name="tunai">Tunai</string>
     <string name="pesanan_berhasil">PESANAN BERHASIL</string>
+    <string name="dont_have_an_account">Dont have an account?</string>
+    <string name="register">Register</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="login">Login</string>
+    <string name="empty_carts">Empty Carts</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>

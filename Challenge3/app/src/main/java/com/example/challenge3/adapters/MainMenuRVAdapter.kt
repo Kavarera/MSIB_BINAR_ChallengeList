@@ -21,7 +21,6 @@ class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerView
             binding.ivImage.setImageResource(item.imageId)
             binding.tvNamaFood.text=item.Name
             binding.tvHarga.text=item.Price
-            Log.e("ui","apply ui in linearHolder")
         }
     }
     inner class MainMenuGridHolder(private val binding:FoodGridBinding):RecyclerView.ViewHolder(binding.root){
@@ -29,7 +28,6 @@ class MainMenuRVAdapter(private var foods: List<Food>,layoutManager:RecyclerView
             binding.tvGimage.setImageResource(item.imageId)
             binding.tvGnamaFood.text=item.Name
             binding.tvGharga.text=item.Price
-            Log.e("ui","apply ui in gridHolder")
         }
     }
 

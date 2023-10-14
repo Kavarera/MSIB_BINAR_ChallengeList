@@ -28,9 +28,7 @@ class KeranjangRecyclerViewAdapter(private val listFood:List<FoodKeranjang>,priv
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val food = listFood[position]
-        Log.d("keranjang","binding ${food.foodName}")
         (holder as LinearPesananKeranjangHolder).bind(food)
-        Log.d("keranjang","${food.foodName} is binded")
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +43,6 @@ class KeranjangRecyclerViewAdapter(private val listFood:List<FoodKeranjang>,priv
             binding.etCatatanItemPesananKeranjang.setText(item.catatan)
             binding.ivRemove.setOnClickListener {
                 removeItem(adapterPosition);
-                Log.d("keranjang","running delete keranjang")
             }
             binding.btnMinItemKeranjang.setOnClickListener {
                 if(item.quantity>1){
@@ -61,7 +58,6 @@ class KeranjangRecyclerViewAdapter(private val listFood:List<FoodKeranjang>,priv
         private fun removeItem(position:Int){
             if(position!=RecyclerView.NO_POSITION){
                 foodViewModel.deleteById(listFood[position].id)
-                Log.d("keranjang","deleting in adapter ${listFood[position]}")
             }
         }
         private fun subtractTotalQuantity(oldValue:Int,foodKeranjang: FoodKeranjang){

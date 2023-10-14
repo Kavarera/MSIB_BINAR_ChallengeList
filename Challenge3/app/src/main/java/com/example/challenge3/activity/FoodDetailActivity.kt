@@ -76,7 +76,6 @@ class FoodDetailActivity : AppCompatActivity() {
     }
 
     private fun goGmaps(foodData:Food){
-        Log.d("int", "Constraint Layout Di Klik")
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(foodData.urlLocation))
         startActivity(intent)
     }

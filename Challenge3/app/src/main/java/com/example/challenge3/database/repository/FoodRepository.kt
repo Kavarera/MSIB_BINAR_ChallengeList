@@ -19,7 +19,6 @@ class FoodKeranjangRepository(application: Application) {
         foodKeranjangDao=db.keranjangPesananDao()
     }
     fun allFoods():LiveData<List<FoodKeranjang>>{
-        Log.d("room","Getting all pesanan")
         return foodKeranjangDao.getAllPesanan()
     }
 

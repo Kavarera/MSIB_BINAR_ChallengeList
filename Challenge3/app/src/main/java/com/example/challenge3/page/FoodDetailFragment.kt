@@ -71,7 +71,6 @@ class FoodDetailFragment : Fragment() {
     }
 
     private fun goGmaps(){
-        Log.d("int", "Constraint Layout Di Klik")
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(this.data.urlLocation))
         startActivity(intent)
     }
