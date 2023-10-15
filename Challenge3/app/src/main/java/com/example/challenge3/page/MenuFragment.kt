@@ -27,12 +27,9 @@ import kotlin.random.Random
 
 class MenuFragment : Fragment() {
     //viewmodel
-//    private lateinit var sharedViewModel:MainActivityViewModel
-
 
     private lateinit var binding:FragmentMenuBinding
     private var gridOption:Int = 0
-//    var gridOption = RecyclerViewOption.LINEAR_LAYOUT.value
     private lateinit var foodListt: LiveData<List<Food>>
     private var foodList = mutableListOf<Food>()
     override fun onCreate(savedInstanceState: Bundle?) {

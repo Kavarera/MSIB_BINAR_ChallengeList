@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".page.RegisterFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="25dp">
+
+        <EditText
+            android:id="@+id/et_username_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="100dp"
+            android:autofillHints="false"
+            android:hint="@string/username"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/blackHalfOp"
+            android:textSize="20sp"
+            android:drawableEnd="@drawable/ic_profile_user"
+            android:background="@drawable/shape_rounded_corner_edittext"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/et_password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_username_register"
+            android:layout_marginTop="20dp"
+            android:autofillHints="false"
+            android:hint="@string/password"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/blackHalfOp"
+            android:textSize="20sp"
+            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
+            android:background="@drawable/shape_rounded_corner_edittext"
+            android:inputType="textPassword"
+            />
+        <EditText
+            android:id="@+id/et_email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_password_register"
+            android:layout_marginTop="20dp"
+            android:autofillHints="false"
+            android:hint="@string/email"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/blackHalfOp"
+            android:textSize="20sp"
+            android:drawableEnd="@drawable/baseline_email_24"
+            android:background="@drawable/shape_rounded_corner_edittext"
+            android:inputType="textEmailAddress"
+            />
+        <EditText
+            android:id="@+id/et_telepon_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_email_register"
+            android:layout_marginTop="20dp"
+            android:autofillHints="false"
+            android:hint="@string/no_telepon"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/blackHalfOp"
+            android:textSize="20sp"
+            android:drawableEnd="@drawable/baseline_call_24"
+            android:background="@drawable/shape_rounded_corner_edittext"
+            android:inputType="phone"
+            />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/et_telepon_register"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/shape_rounded_corner_edittext"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

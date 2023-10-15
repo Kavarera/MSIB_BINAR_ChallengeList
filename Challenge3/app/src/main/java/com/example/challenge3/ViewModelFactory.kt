@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.challenge3.viewmodels.FoodViewModel
 import com.example.challenge3.viewmodels.KonfirmasiPesananViewModel
+import com.example.challenge3.viewmodels.LoginViewModel
 import com.example.challenge3.viewmodels.MainActivityViewModel
 
 
@@ -16,6 +17,9 @@ class ViewModelFactory(private val application: Application ) : ViewModelProvide
         }
         if(modelClass.isAssignableFrom(KonfirmasiPesananViewModel::class.java)){
             return KonfirmasiPesananViewModel(application) as T
+        }
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(application) as T
         }
         throw IllegalArgumentException("Unknow ViewModel Class")
     }
