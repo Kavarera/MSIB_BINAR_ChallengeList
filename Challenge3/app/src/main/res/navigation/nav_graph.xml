@@ -6,12 +6,9 @@
     app:startDestination="@id/menuFragment">
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.challenge3.page.MenuFragment"
+        android:name="com.example.challenge3.pages.MainPages.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
-        <action
-            android:id="@+id/action_menuFragment_to_foodDetailFragment"
-            app:destination="@id/foodDetailFragment" />
         <action
             android:id="@+id/action_menuFragment_to_foodDetailActivity"
             app:destination="@id/foodDetailActivity">
@@ -25,17 +22,8 @@
 
     </fragment>
     <fragment
-        android:id="@+id/foodDetailFragment"
-        android:name="com.example.challenge3.page.FoodDetailFragment"
-        android:label="fragment_food_detail"
-        tools:layout="@layout/fragment_food_detail" >
-        <argument
-            android:name="data"
-            app:argType="com.example.challenge3.models.Food" />
-    </fragment>
-    <fragment
         android:id="@+id/keranjangFragment"
-        android:name="com.example.challenge3.page.KeranjangFragment"
+        android:name="com.example.challenge3.pages.MainPages.KeranjangFragment"
         android:label="fragment_keranjang"
         tools:layout="@layout/fragment_keranjang" >
 
@@ -45,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.challenge3.page.ProfileFragment"
+        android:name="com.example.challenge3.pages.MainPages.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -54,22 +42,22 @@
     </fragment>
     <activity
         android:id="@+id/profileEditActivity"
-        android:name="com.example.challenge3.activity.ProfileEditActivity"
+        android:name="com.example.challenge3.pages.ProfilePages.ProfileEditActivity"
         android:label="activity_profile_edit"
         tools:layout="@layout/activity_profile_edit" />
     <activity
         android:id="@+id/foodDetailActivity"
-        android:name="com.example.challenge3.activity.FoodDetailActivity"
+        android:name="com.example.challenge3.pages.FoodDetailPages.FoodDetailActivity"
         android:label="activity_food_detail"
         tools:layout="@layout/activity_food_detail" />
     <fragment
         android:id="@+id/konfirmasiPesananFragment"
-        android:name="com.example.challenge3.page.KonfirmasiPesananFragment"
+        android:name="com.example.challenge3.pages.MainPages.KonfirmasiPesananFragment"
         android:label="fragment_konfirmasi_pesanan"
         tools:layout="@layout/fragment_konfirmasi_pesanan" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.challenge3.page.LoginFragment"
+        android:name="com.example.challenge3.pages.AuthPages.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -78,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.challenge3.page.RegisterFragment"
+        android:name="com.example.challenge3.pages.AuthPages.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>

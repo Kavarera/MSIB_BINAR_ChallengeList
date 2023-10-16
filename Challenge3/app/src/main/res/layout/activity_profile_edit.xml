@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ProfileEditActivity">
+    tools:context=".pages.ProfilePages.ProfileEditActivity">
 
     <ImageButton
         android:id="@+id/ib_cancel_edit_profile"

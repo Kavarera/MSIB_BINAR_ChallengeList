@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".page.RegisterFragment">
+    tools:context=".pages.AuthPages.RegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
             android:drawableEnd="@drawable/ic_profile_user"
             android:background="@drawable/shape_rounded_corner_edittext"
             android:inputType="text"
+
             />
 
         <EditText
