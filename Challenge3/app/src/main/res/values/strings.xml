@@ -55,6 +55,8 @@
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="login">Login</string>
     <string name="empty_carts">Empty Carts</string>
+    <string name="back_button">back button</string>
+    <string name="decrease_item">decrease item</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>

@@ -56,11 +56,11 @@ class KeranjangFragment : Fragment() {
             var totalPrice:Int = 0
             item.forEach {
                 var t =0
-                t = it.quantity * it.foodPrice
+                t = it.quantity * it.harga
                 totalPrice +=t
             }
             binding.tvTotalHargaPesanan.text="Rp. ${totalPrice.toString()}"
-            adapter = KeranjangRecyclerViewAdapter(item,foodViewModel)
+            adapter = KeranjangRecyclerViewAdapter(requireContext(),item,foodViewModel)
             recyclerView.adapter=adapter
             recyclerView.layoutManager=LinearLayoutManager(requireContext())
         }

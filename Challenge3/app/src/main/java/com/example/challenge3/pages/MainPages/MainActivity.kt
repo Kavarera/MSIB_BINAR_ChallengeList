@@ -2,6 +2,7 @@ package com.example.challenge3.pages.MainPages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
@@ -10,7 +11,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.challenge3.R
 import com.example.challenge3.databinding.ActivityMainBinding
 import com.example.challenge3.models.enumclass.EnumListFragment
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
+import com.example.challenge3.util.networking.Response.CategoryResponse
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = this.findNavController(R.id.fragContainer)
+        navController.popBackStack()
+        navController.navigate(R.id.loginFragment)
         binding.bottomNavBar.setupWithNavController(navController)
         binding.bottomNavBar.setOnItemSelectedListener {
             when(it.itemId){
@@ -53,8 +61,6 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavBar.visibility=View.GONE
             }
         }
-        navController.popBackStack()
-        navController.navigate(R.id.loginFragment)
 
     }
 

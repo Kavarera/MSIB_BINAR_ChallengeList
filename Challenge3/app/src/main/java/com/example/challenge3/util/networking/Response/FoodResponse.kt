@@ -1,9 +1,9 @@
 package com.example.challenge3.util.networking.Response
 
-import com.example.challenge3.models.CategoryFoodData
+import com.example.challenge3.models.Food
 
-data class CategoryResponse(
-	val data: List<CategoryFoodData>?,
+data class FoodResponse(
+	val data: List<Food>,
 	val code:Int,
 	val message: String,
 	val status: Boolean

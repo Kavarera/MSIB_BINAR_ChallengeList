@@ -4,6 +4,9 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
+
+    //Google Service AKA Firebase
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,8 +57,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 
-    //View Model
+    //View Model & livedata
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 
     //Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
@@ -78,4 +82,17 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+
+    //Google Services AKA Firebase
+    implementation platform('com.google.Firebase:Firebase-bom:32.3.1')
+    implementation 'com.google.Firebase:Firebase-analytics'
+        //For auth
+    implementation 'com.google.Firebase:Firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+
 }

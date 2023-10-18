@@ -1,9 +1,8 @@
 package com.example.challenge3.models
 
+import com.google.gson.annotations.SerializedName
+
 data class CategoryFoodData(
-    val createdAt: String,
-    val nama: String,
-    val imageUrl: String,
-    val id: Int,
-    val updatedAt: String
+    @SerializedName("nama") val nama: String,
+    @SerializedName("image_url")val imageUrl: String,
 )

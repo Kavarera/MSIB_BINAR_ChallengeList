@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300694296870",
+    "project_id": "msib-binar-restaurant-app",
+    "storage_bucket": "msib-binar-restaurant-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300694296870:android:9f96ea166c3ddbfe6c09e7",
+        "android_client_info": {
+          "package_name": "com.example.challenge3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk3SRet0ed2F_EwTI3mEavmvqVvQ6-vok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

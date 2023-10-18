@@ -1,32 +1,41 @@
 package com.example.challenge3.util.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.challenge3.databinding.FoodGridBinding
 import com.example.challenge3.databinding.FoodLinearBinding
 import com.example.challenge3.models.Food
 import com.example.challenge3.models.enumclass.EnumRecyclerViewOption
 
-class MainMenuRVAdapter(private var foods: List<Food>,layoutManager: EnumRecyclerViewOption):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var onItemClickCallback: IonItemClickCallback
+class MainMenuRVAdapter(private var c:Context,private var foods: List<Food>,layoutManager: EnumRecyclerViewOption):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface IonItemClickCallback {
         fun onItemClicked(data: Food)
     }
 
+    private lateinit var onItemClickCallback: IonItemClickCallback
+
     inner class MainMenuLinearHolder(private val binding: FoodLinearBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Food){
-            binding.ivImage.setImageResource(item.imageId)
-            binding.tvNamaFood.text=item.Name
-            binding.tvHarga.text=item.Price
+            Glide.with(c)
+                .load(item.imageUrl)
+                .into(binding.ivImage)
+//            binding.ivImage.setImageResource(item.imageId)
+            binding.tvNamaFood.text=item.nama
+            binding.tvHarga.text=item.hargaString
         }
     }
     inner class MainMenuGridHolder(private val binding:FoodGridBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item:Food){
-            binding.tvGimage.setImageResource(item.imageId)
-            binding.tvGnamaFood.text=item.Name
-            binding.tvGharga.text=item.Price
+            Glide.with(c)
+                .load(item.imageUrl)
+                .into(binding.tvGimage)
+//            binding.tvGimage.setImageResource(item.imageId)
+            binding.tvGnamaFood.text=item.nama
+            binding.tvGharga.text=item.hargaString
         }
     }
 

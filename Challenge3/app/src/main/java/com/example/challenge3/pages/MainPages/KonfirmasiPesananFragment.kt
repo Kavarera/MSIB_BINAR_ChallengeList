@@ -64,10 +64,10 @@ class KonfirmasiPesananFragment : Fragment() {
             }
             var t =0
             item.forEach {
-                t = t+(it.quantity *it.foodPrice)
+                t = t+(it.quantity *it.harga)
             }
             binding.tvHargaTotalPesanan.text="Rp. ${t.toString()}"
-            adapter= KeranjangRecyclerViewAdapter(item,foodViewModel)
+            adapter= KeranjangRecyclerViewAdapter(requireContext(),item,foodViewModel)
             recyclerView.adapter=adapter
             recyclerView.layoutManager=LinearLayoutManager(requireContext())
         }

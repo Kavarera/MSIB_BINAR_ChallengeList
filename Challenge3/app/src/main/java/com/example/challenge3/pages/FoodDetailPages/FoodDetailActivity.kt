@@ -4,9 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.ActivityFoodDetailBinding
 import com.example.challenge3.models.Food
@@ -26,20 +28,18 @@ class FoodDetailActivity : AppCompatActivity() {
         val viewModelFactory = PageViewModelFactory(this.application)
         foodViewModel = ViewModelProvider(this,viewModelFactory).get(FoodViewModel::class.java)
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
-        val foodData: Food = intent.getParcelableExtra("foodData")!!
+        val foodData: Food = intent.getParcelableExtra("data")!!
 
-        binding.tvFoodNameDetail.text = foodData.Name
-        binding.tvFooddesc.text=foodData.description
-        binding.tvLokasiDetail.text=foodData.location
-        binding.tvFoodPrice.text="Rp ${foodData.Price}"
-        binding.flFoodDetailImage.setBackgroundResource(foodData.imageId)
+        binding.tvFoodNameDetail.text = foodData.nama
+        binding.tvFooddesc.text=foodData.detail
+        binding.tvLokasiDetail.text=foodData.alamatResto
+        binding.tvFoodPrice.text=foodData.hargaString
+        Glide.with(this)
+            .load(foodData.imageUrl)
+            .centerCrop()
+            .into(binding.ivFoodDetailImage)
+//        binding.flFoodDetailImage.setBackgroundResource(foodData.imageId)
         binding.tvTotalItem.text=foodDetailViewModel.totalItem.toString()
-        binding.tvLokasiDetail.setOnClickListener{
-            goGmaps(foodData)
-        }
-        binding.tvLokasi.setOnClickListener{
-            goGmaps(foodData)
-        }
 
         binding.btnAddItem.setOnClickListener {
             foodDetailViewModel.addMoreItem()
@@ -53,9 +53,18 @@ class FoodDetailActivity : AppCompatActivity() {
         }
 
         binding.btnAddToCart.setOnClickListener {
-            val foodKeranjang = FoodKeranjang(0,foodData.Name,foodData.imageId,foodData.Price.toInt(),
-                totalitem,totalPrice,"No Note"
+            val foodKeranjang = FoodKeranjang(
+                id = 0,
+                foodName = foodData.nama,
+                harga = foodData.harga,
+                imageUrl = foodData.imageUrl,
+                hargaString = foodData.hargaString,
+                quantity = totalitem,
+                totalPrice = totalPrice,
             )
+//            val foodKeranjang = FoodKeranjang(0,foodData.Name,foodData.imageId,foodData.Price.toInt(),
+//                totalitem,totalPrice,"No Note"
+//            )
             foodViewModel.insertFood(foodKeranjang)
 
             Toast.makeText(this,"Berhasil Menambahkan ke keranjang",Toast.LENGTH_SHORT).show()
@@ -64,7 +73,8 @@ class FoodDetailActivity : AppCompatActivity() {
         foodDetailViewModel.totalItem.observe(this){
             item->
             totalitem = item
-            totalPrice = totalitem * foodData.Price.toInt()
+
+            totalPrice = totalitem * foodData.harga
             binding.tvTotalItem.text = totalitem.toString()
             binding.btnAddToCart.text = "Tambah Ke Keranjang - Rp. $totalPrice"
         }
@@ -74,8 +84,4 @@ class FoodDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun goGmaps(foodData:Food){
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(foodData.urlLocation))
-        startActivity(intent)
-    }
 }

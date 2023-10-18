@@ -43,7 +43,7 @@ class FoodKeranjangRepository(application: Application) {
         executorService.execute {
             foodKeranjangDao
                 .updateQuantityAndTotalPric(quantity,
-                    food.foodPrice*quantity,food.id)
+                    food.harga*quantity,food.id)
         }
     }
 }
