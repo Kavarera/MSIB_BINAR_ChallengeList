@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentRegisterBinding
+import com.example.challenge3.models.User
 import com.example.challenge3.util.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -62,11 +63,20 @@ class RegisterFragment : Fragment() {
 
         binding.btnRegister.setOnClickListener {
 
-            findNavController().popBackStack()
+            viewModel.registerUser(User(
+                username = binding.etUsernameRegister.text.toString(),
+                email = binding.etEmailRegister.text.toString(),
+                telepon = binding.etTeleponRegister.text.toString()
+            ),binding.etEmailRegister.text.toString(),
+                binding.etPasswordRegister.text.toString())
         }
 
-
-
+        viewModel.isRegister.observe(viewLifecycleOwner){
+            if(it){
+                viewModel.resetRegisterStatus()
+                findNavController().popBackStack()
+            }
+        }
         return binding.root
     }
 }

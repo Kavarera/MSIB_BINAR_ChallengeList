@@ -18,4 +18,6 @@ class LoginViewModel(application: Application): ViewModel() {
     fun setUsername(newUsername:String){
         _username.postValue(newUsername)
     }
+
+
 }

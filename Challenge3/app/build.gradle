@@ -4,9 +4,10 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 
     //Google Service AKA Firebase
-    id 'com.google.gms.google-services'
+//    id 'com.google.gms.google-services'
 }
 
 android {
@@ -49,10 +50,17 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//    implementation 'com.google.firebase:firebase-auth-ktx:22.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:32.4.0')
+//    FIrebase firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+//    Firebase Auth
+    implementation 'com.google.firebase:firebase-auth-ktx'
     //Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
@@ -89,10 +97,10 @@ dependencies {
 
 
     //Google Services AKA Firebase
-    implementation platform('com.google.Firebase:Firebase-bom:32.3.1')
-    implementation 'com.google.Firebase:Firebase-analytics'
+//    implementation platform('com.google.Firebase:Firebase-bom:32.3.1')
+//    implementation 'com.google.Firebase:Firebase-analytics'
         //For auth
-    implementation 'com.google.Firebase:Firebase-auth'
-    implementation 'com.google.firebase:firebase-firestore'
+//    implementation 'com.google.Firebase:Firebase-auth'
+//    implementation 'com.google.firebase:firebase-firestore'
 
 }

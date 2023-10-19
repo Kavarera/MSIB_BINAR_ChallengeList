@@ -113,7 +113,6 @@ class MenuFragment : Fragment() {
 
                 })
                 rv.adapter=adapter
-                Toast.makeText(requireContext(),"change to grid",Toast.LENGTH_SHORT).show()
             }
             else{
                 gridOption= EnumRecyclerViewOption.LINEAR_LAYOUT.value
