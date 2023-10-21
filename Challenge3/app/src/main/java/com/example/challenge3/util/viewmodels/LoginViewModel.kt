@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.lang.Exception
 
 class LoginViewModel(application: Application): ViewModel() {
     private val _username =MutableLiveData<String>()
@@ -60,22 +61,28 @@ class LoginViewModel(application: Application): ViewModel() {
 
     fun Login(username:String, password:String,context:Context){
         viewModelScope.launch(Dispatchers.IO) {
-            var user = getUserData(username).await()
-            Log.d("Login","Email received on Login Function ${user?.email}")
-            if(user!=null){
-                Firebase.auth.signInWithEmailAndPassword(user.email,password)
-                    .addOnCompleteListener {
-                        if(it.isSuccessful){
-                            PreferencesHelper.getInstance(context)
-                                .saveUser(context,user)
-                            Log.d("Login","Login Success on vm also success saving sharedpreferences")
-                            _IsLogin.postValue(true)
-                        }
-                        else{
-                            Log.d("Login","Login Fail on vm")
-                            _IsLogin.postValue(false)
-                        }
-                    }.await()
+            try{
+                var user = getUserData(username).await()
+                Log.d("Login","Email received on Login Function ${user?.email}")
+                if(user!=null){
+                    Firebase.auth.signInWithEmailAndPassword(user.email,password)
+                        .addOnCompleteListener {
+                            if(it.isSuccessful){
+                                PreferencesHelper.getInstance(context)
+                                    .saveUser(context,user)
+                                Log.d("Login","Login Success on vm also success saving sharedpreferences")
+                                _IsLogin.postValue(true)
+                            }
+                            else{
+                                Log.d("Login","Login Fail on vm")
+                                _IsLogin.postValue(false)
+                            }
+                        }.await()
+                }
+            }
+            catch (e:Exception){
+                _IsLogin.postValue(false)
+                Log.d("Login",e.message.toString())
             }
         }
     }

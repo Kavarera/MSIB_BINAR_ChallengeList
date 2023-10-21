@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
@@ -25,6 +26,7 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding:FragmentLoginBinding
     private var isPasswordVisible = false
+    var beforeNotif = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
@@ -41,6 +43,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
+
+        binding.btnLogin.visibility = View.VISIBLE
 
         val textWatcher = object:TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -97,6 +101,13 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(R.id.menuFragment)
             }
             else{
+                if(beforeNotif){
+                    Toast.makeText(requireContext(),
+                        "Invalid credentials",Toast.LENGTH_LONG).show()
+
+                }
+
+                binding.btnLogin.visibility=View.VISIBLE
                 Log.d("Login","Gagal Login")
             }
         }
@@ -105,8 +116,16 @@ class LoginFragment : Fragment() {
 
             if(!binding.etPasswordLogin.text.isNullOrEmpty() &&
                 !binding.etUsernameLogin.text.isNullOrEmpty()){
+                beforeNotif=true
+                binding.btnLogin.visibility=View.INVISIBLE
                 viewModel.Login(binding.etUsernameLogin.text.toString(),
                     binding.etPasswordLogin.text.toString(),requireContext())
+
+            }
+            else{
+                binding.etUsernameLogin.error="Please fill this part"
+                binding.etPasswordLogin.error="Please fill this part"
+
             }
 //            findNavController().popBackStack()
 //            mainViewModel.setVisibleBottomNav(true)

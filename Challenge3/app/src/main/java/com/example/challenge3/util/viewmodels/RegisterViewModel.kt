@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.lang.Exception
 
 class RegisterViewModel(application:Application): ViewModel() {
     private val _username = MutableLiveData<String>()
@@ -48,18 +49,22 @@ class RegisterViewModel(application:Application): ViewModel() {
     }
 
     fun registerUser(user:User,email:String,password:String){
-        viewModelScope.launch(Dispatchers.IO) {
-            Firebase.auth.createUserWithEmailAndPassword(
-                email,password
-            ).addOnCompleteListener {
-                if(it.isSuccessful){
-                    saveUserData(user)
-                    Log.d("Firebase","berhasil auth create")
-                }
-                else{
-                    Log.d("Firebase","Gagal auth create")
-                }
-            }.await()
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                Firebase.auth.createUserWithEmailAndPassword(
+                    email,password
+                ).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        saveUserData(user)
+                        Log.d("Firebase","berhasil auth create")
+                    }
+                    else{
+                        Log.d("Firebase","Gagal auth create")
+                    }
+                }.await()
+            }
+        } catch (e:Exception){
+            Log.d("Firebase",e.message.toString())
         }
     }
 
