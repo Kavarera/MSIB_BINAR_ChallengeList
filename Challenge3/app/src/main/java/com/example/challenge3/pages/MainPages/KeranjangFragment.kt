@@ -14,6 +14,7 @@ import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.util.adapter.KeranjangRecyclerViewAdapter
 import com.example.challenge3.databinding.FragmentKeranjangBinding
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.FoodViewModel
 
 class KeranjangFragment : Fragment() {
@@ -25,7 +26,8 @@ class KeranjangFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Viewmodel
-        val viewModelFactory = PageViewModelFactory(requireActivity().application)
+        val viewModelFactory = PageViewModelFactory(requireActivity().application,
+            ApiClient.instance)
         foodViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(FoodViewModel::class.java)
         listPesanan=foodViewModel.getAllFoods()
     }

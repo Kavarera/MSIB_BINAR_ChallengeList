@@ -22,14 +22,18 @@ import java.lang.Exception
 class MenuViewModel(private val apiService: ApiService):ViewModel() {
 
 
-    fun fetchAllFoods() = liveData(Dispatchers.IO){
+    fun fetchAllFoods(category: String? = null) = liveData(Dispatchers.IO){
         try {
-            emit(Resource.success(data=apiService.getAllFoods()))
+            if(category!=null){
+                emit(Resource.success(data = apiService.getFoodsWithCategory(category)))
+            }
+            else{
+                emit(Resource.success(data=apiService.getAllFoods()))
+            }
         }catch (e:Exception){
             emit(Resource.error(data=apiService.getAllFoods(), message = e.message?:"Error when getting all foods" ))
         }
     }
-
 
 
     fun fetchCategories() = liveData(Dispatchers.IO){
@@ -39,6 +43,8 @@ class MenuViewModel(private val apiService: ApiService):ViewModel() {
             emit(Resource.error(data=null, message=e.message ?:"Error when getting all categories"))
         }
     }
+
+
 
 //    fun fetchCategories():LiveData<List<CategoryFoodData>?>{
 //        val categoriesLiveData = MutableLiveData<List<CategoryFoodData>?>()

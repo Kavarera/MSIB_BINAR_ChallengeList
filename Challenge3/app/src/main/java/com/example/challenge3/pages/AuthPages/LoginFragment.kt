@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
 import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentLoginBinding
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.LoginViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
 
@@ -29,7 +31,7 @@ class LoginFragment : Fragment() {
         mainViewModel.setVisibleBottomNav(false)
         viewModel = ViewModelProvider(
             requireActivity(),
-            PageViewModelFactory(requireActivity().application)
+            PageViewModelFactory(requireActivity().application, ApiClient.instance)
             ).get(LoginViewModel::class.java)
     }
 
@@ -86,10 +88,29 @@ class LoginFragment : Fragment() {
         binding.etPasswordLogin.setText(viewModel.password.value)
         binding.etPasswordLogin.addTextChangedListener(textWatcher)
 
+        viewModel.IsLogin.observe(viewLifecycleOwner){
+            if(it==true){
+                Log.d("Login","Berhasil Login")
+
+                findNavController().popBackStack()
+                mainViewModel.setVisibleBottomNav(true)
+                findNavController().navigate(R.id.menuFragment)
+            }
+            else{
+                Log.d("Login","Gagal Login")
+            }
+        }
+
         binding.btnLogin.setOnClickListener{
-            findNavController().popBackStack()
-            mainViewModel.setVisibleBottomNav(true)
-            findNavController().navigate(R.id.menuFragment)
+
+            if(!binding.etPasswordLogin.text.isNullOrEmpty() &&
+                !binding.etUsernameLogin.text.isNullOrEmpty()){
+                viewModel.Login(binding.etUsernameLogin.text.toString(),
+                    binding.etPasswordLogin.text.toString(),requireContext())
+            }
+//            findNavController().popBackStack()
+//            mainViewModel.setVisibleBottomNav(true)
+//            findNavController().navigate(R.id.menuFragment)
         }
 
         binding.tvRegister.setOnClickListener{

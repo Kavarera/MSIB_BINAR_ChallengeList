@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.challenge3.util.networking.Request.OrdersItem
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "food_keranjang")
@@ -17,4 +18,12 @@ data class FoodKeranjang(
     @ColumnInfo(name = "food_quantity") var quantity:Int,
     @ColumnInfo(name="total_price") var totalPrice:Int,
     @ColumnInfo(name = "food_catatan") var catatan:String = "No Note"
-) : Parcelable
+) : Parcelable{
+    fun toOrdersItem():OrdersItem{
+        return OrdersItem(foodName,harga, quantity,catatan)
+    }
+
+    fun List<FoodKeranjang>.toOrdersItemList():List<OrdersItem>{
+        return map{it.toOrdersItem()}
+    }
+}

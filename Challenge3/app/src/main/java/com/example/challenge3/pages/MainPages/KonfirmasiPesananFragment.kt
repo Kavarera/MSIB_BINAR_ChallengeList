@@ -2,12 +2,14 @@ package com.example.challenge3.pages.MainPages
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,8 @@ import com.example.challenge3.pages.Dialogs.DialogPesananBerhasil
 import com.example.challenge3.models.enumclass.EnumMetodePembayaran
 import com.example.challenge3.models.enumclass.EnumMetodePengiriman
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
+import com.example.challenge3.util.networking.Request.OrdersItem
 import com.example.challenge3.util.viewmodels.FoodViewModel
 import com.example.challenge3.util.viewmodels.KonfirmasiPesananViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
@@ -34,15 +38,17 @@ class KonfirmasiPesananFragment : Fragment() {
     private lateinit var pembayaran: LiveData<EnumMetodePembayaran>
     private lateinit var pengiriman: LiveData<EnumMetodePengiriman>
 
+    private lateinit var mappedListOrdersItem: LiveData<List<OrdersItem>>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         foodViewModel = ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application)
+            PageViewModelFactory(requireActivity().application,ApiClient.instance)
         )
             .get(FoodViewModel::class.java)
 
         keranjangViewModel=ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application)
+            PageViewModelFactory(requireActivity().application,ApiClient.instance)
         )
             .get(KonfirmasiPesananViewModel::class.java)
 
@@ -70,9 +76,48 @@ class KonfirmasiPesananFragment : Fragment() {
             adapter= KeranjangRecyclerViewAdapter(requireContext(),item,foodViewModel)
             recyclerView.adapter=adapter
             recyclerView.layoutManager=LinearLayoutManager(requireContext())
+
+            binding.btnCheckout.setOnClickListener {
+                var total = 0
+
+                val mappedListPesanan: LiveData<List<OrdersItem>> = Transformations.map(listPesanan) {
+                    val mappedList = mutableListOf<OrdersItem>()
+
+                    for (foodKeranjang in it) {
+                        total = total+foodKeranjang.harga
+                        val ordersItem = OrdersItem(
+                            foodKeranjang.foodName,
+                            foodKeranjang.harga,
+                            foodKeranjang.quantity,
+                            foodKeranjang.catatan
+                        )
+                        Log.d("pesanan","mapped name = ${foodKeranjang.foodName}")
+                        mappedList.add(ordersItem)
+                    }
+
+                    return@map mappedList
+                }
+
+                Log.d("pesanan",mappedListPesanan.value.toString())
+
+                val response = keranjangViewModel.sendOrder(requireContext(),
+                    mappedListPesanan.value,total)
+
+
+            }
+
+
         }
         pembayaran = keranjangViewModel.tipePembayaran()
         pengiriman = keranjangViewModel.tipePengiriman()
+
+        keranjangViewModel.isSuccessfullySubmitOrder.observe(viewLifecycleOwner){
+            if(it){
+                DialogPesananBerhasil().show(requireActivity().supportFragmentManager,"dialogPesananBerhasil")
+                foodViewModel.deleteAllFoods()
+                keranjangViewModel.resetSubmitOrder()
+            }
+        }
 
         pembayaran.observe(viewLifecycleOwner){
             if(it== EnumMetodePembayaran.TUNAI){
@@ -130,10 +175,6 @@ class KonfirmasiPesananFragment : Fragment() {
         }
         binding.btnAmbilSendiri.setOnClickListener {
             keranjangViewModel.switchMetodePengiriman(EnumMetodePengiriman.AMBIL_SENDIRI)
-        }
-        binding.btnCheckout.setOnClickListener {
-            DialogPesananBerhasil().show(requireActivity().supportFragmentManager,"dialogPesananBerhasil")
-            foodViewModel.deleteAllFoods()
         }
 
 

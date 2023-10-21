@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentRegisterBinding
 import com.example.challenge3.models.User
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -23,7 +24,7 @@ class RegisterFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application)
+            PageViewModelFactory(requireActivity().application, ApiClient.instance)
         )
             .get(RegisterViewModel::class.java)
     }

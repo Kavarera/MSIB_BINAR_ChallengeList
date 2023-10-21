@@ -11,6 +11,7 @@ class ApiViewModelFactory(val apiService: ApiService):ViewModelProvider.NewInsta
         if(modelClass.isAssignableFrom(MenuViewModel::class.java)){
             return MenuViewModel(apiService) as T
         }
+
         else{
             throw IllegalArgumentException("Unknown Viewmodel class name")
         }

@@ -77,6 +77,7 @@ class MenuFragment : Fragment() {
         } else{
             GridLayoutManager(requireContext(),2)
         }
+        Log.d("gridOption","${rv.layoutManager.toString()} --- ${rv.layoutManager}")
         var adapter = if(gridOption== EnumRecyclerViewOption.LINEAR_LAYOUT.value){
             MainMenuRVAdapter(requireContext(), foodList, EnumRecyclerViewOption.LINEAR_LAYOUT)
         } else{
@@ -150,6 +151,8 @@ class MenuFragment : Fragment() {
 
         return binding.root
     }
+
+
     fun fetchCategoriesData(){//Using coroutines
         viewModel.fetchCategories().observe(viewLifecycleOwner){data->
             when(data.status){
@@ -177,14 +180,27 @@ class MenuFragment : Fragment() {
 
                     binding.incl1.incl11.tvNamaFood.text=testingAPIFoodCategories?.get(0)?.nama
 
+                    binding.incl1.incl11.ivItem.setOnClickListener {
+                        categoryClicked(binding.incl1.incl11.tvNamaFood.text.toString().lowercase())
+                    }
 
                     binding.incl1.incl12.tvNamaFood.text=testingAPIFoodCategories?.get(1)?.nama
 
+                    binding.incl1.incl12.ivItem.setOnClickListener {
+                        categoryClicked(binding.incl1.incl12.tvNamaFood.text.toString().lowercase())
+                    }
 
                     binding.incl1.incl13.tvNamaFood.text=testingAPIFoodCategories?.get(2)?.nama
 
+                    binding.incl1.incl13.ivItem.setOnClickListener {
+                        categoryClicked(binding.incl1.incl13.tvNamaFood.text.toString().lowercase())
+                    }
 
                     binding.incl1.incl14.tvNamaFood.text=testingAPIFoodCategories?.get(3)?.nama
+
+                    binding.incl1.incl14.ivItem.setOnClickListener {
+                        categoryClicked(binding.incl1.incl14.tvNamaFood.text.toString().lowercase())
+                    }
                 }
                 EnumStatus.LOADING->{
 
@@ -192,6 +208,41 @@ class MenuFragment : Fragment() {
             }
         }
 
+    }
+
+    fun categoryClicked(category:String){
+        viewModel.fetchAllFoods(category).observe(viewLifecycleOwner){
+            when(it.status){
+                EnumStatus.SUCCESS->{
+                    foodListAPI=it.data?.data!!
+                    foodList=it.data.data
+
+                    var adapter = if(gridOption== EnumRecyclerViewOption.LINEAR_LAYOUT.value){
+                        MainMenuRVAdapter(requireContext(), foodList, EnumRecyclerViewOption.LINEAR_LAYOUT)
+                    } else{
+                        MainMenuRVAdapter(requireContext(),foodList, EnumRecyclerViewOption.GRID_LAYOUT)
+
+                    }
+                    adapter.setOnItemClickCallback(object : MainMenuRVAdapter.IonItemClickCallback{
+                        override fun onItemClicked(data: Food) {
+                            val mb = Bundle().apply {
+                                putParcelable("data",data)
+                            }
+                            findNavController().navigate(R.id.action_menuFragment_to_foodDetailActivity,mb)
+                        }
+
+                    })
+                    rv.adapter=adapter
+
+                }
+                EnumStatus.ERROR->{
+                    Log.e("API","Error API Menu Fragment")
+                }
+                else->{
+
+                }
+            }
+        }
     }
 
     fun fetchFoods(){

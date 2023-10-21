@@ -38,8 +38,8 @@ class RegisterViewModel(application:Application): ViewModel() {
 
 
         viewModelScope.launch (Dispatchers.IO){
-            Firebase.firestore.collection(user.username)
-                .document()
+            Firebase.firestore.collection("data-msib-restaurant")
+                .document(user.username)
                 .set(user)
                 .addOnSuccessListener {
                     _isRegister.postValue(true)
@@ -48,10 +48,19 @@ class RegisterViewModel(application:Application): ViewModel() {
     }
 
     fun registerUser(user:User,email:String,password:String){
-        saveUserData(user)
-        Firebase.auth.createUserWithEmailAndPassword(
-            email,password
-        )
+        viewModelScope.launch(Dispatchers.IO) {
+            Firebase.auth.createUserWithEmailAndPassword(
+                email,password
+            ).addOnCompleteListener {
+                if(it.isSuccessful){
+                    saveUserData(user)
+                    Log.d("Firebase","berhasil auth create")
+                }
+                else{
+                    Log.d("Firebase","Gagal auth create")
+                }
+            }.await()
+        }
     }
 
     fun resetRegisterStatus(){

@@ -13,6 +13,7 @@ import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.ActivityFoodDetailBinding
 import com.example.challenge3.models.Food
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.FoodDetailViewModel
 import com.example.challenge3.util.viewmodels.FoodViewModel
 
@@ -25,7 +26,7 @@ class FoodDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModelFactory = PageViewModelFactory(this.application)
+        val viewModelFactory = PageViewModelFactory(this.application, ApiClient.instance)
         foodViewModel = ViewModelProvider(this,viewModelFactory).get(FoodViewModel::class.java)
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
         val foodData: Food = intent.getParcelableExtra("data")!!
