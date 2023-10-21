@@ -2,11 +2,44 @@ package com.example.challenge3.pages.ProfilePages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.activity.viewModels
 import com.example.challenge3.R
+import com.example.challenge3.databinding.ActivityProfileEditBinding
+import com.example.challenge3.models.User
+import com.example.challenge3.util.preferences.PreferencesHelper
+import com.example.challenge3.util.viewmodels.ProfileEditViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class ProfileEditActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityProfileEditBinding
+    private val viewModel by viewModels<ProfileEditViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_edit)
+        binding=ActivityProfileEditBinding.inflate(layoutInflater)
+
+        val user = PreferencesHelper.getInstance(this)
+            .getUser(this)
+
+        binding.etUsernameProfileEditmode.setText(user?.username)
+        binding.etTeleponProfileEditmode.setText(user?.telepon)
+
+        binding.ibCancelEditProfile.setOnClickListener {
+            finish()
+        }
+
+        binding.ivConfirmEditprofile.setOnClickListener {
+            val newUser = User(user!!.username,user.email,user.telepon)
+            Log.d("Firebase","${newUser.username}---${user.username}")
+            newUser.username=binding.etUsernameProfileEditmode.text.toString()
+            newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
+            Log.d("Firebase","${newUser.username}---${user.username}")
+            viewModel.updateProfile(user,newUser)
+        }
+
+
+        setContentView(binding.root)
     }
 }

@@ -14,6 +14,9 @@ import com.example.challenge3.models.enumclass.EnumListFragment
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.networking.Response.CategoryResponse
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +27,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        FirebaseAuth.getInstance().signOut()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = this.findNavController(R.id.fragContainer)

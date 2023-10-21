@@ -26,6 +26,9 @@ import com.example.challenge3.models.enumclass.EnumStatus
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.MenuViewModel
 import com.example.challenge3.util.viewmodelsfactory.ApiViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class MenuFragment : Fragment() {
@@ -69,6 +72,8 @@ class MenuFragment : Fragment() {
 
         fetchCategoriesData()
         fetchFoods()
+
+
 
 
         gridOption = mySharedPreferences.layoutOption

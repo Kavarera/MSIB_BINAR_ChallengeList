@@ -87,13 +87,14 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:inputType="text"
-        android:clickable="false"
-        android:focusable="false"
-        android:hint="@string/kavarera"
-        android:importantForAutofill="no" />
+        android:hint="@string/kavarera" />
+
+
+
+
 
     <TextView
-        android:id="@+id/tv_label_password_editmode"
+        android:id="@+id/tv_label_telepon_editmode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -101,79 +102,8 @@
         app:layout_constraintStart_toStartOf="@id/tv_label_username_editmode"
         android:layout_marginTop="10dp"
 
-        android:text="@string/password"
-        android:textColor="@color/black"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        app:layout_constraintTop_toBottomOf="@id/tv_label_password_editmode"
-        app:layout_constraintStart_toStartOf="@id/tv_label_username_editmode"
-        android:id="@+id/til_password_editmode"
-        android:layout_width="325dp"
-        android:layout_height="40dp"
-        app:endIconMode="password_toggle"
-        app:hintTextColor="@color/black"
-        android:layout_marginTop="10dp"
-        app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password_editmode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:background="@color/grey"
-            android:textColorHint="@color/black"
-            android:clickable="false"
-            android:focusable="false"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-    <TextView
-        android:id="@+id/tv_label_email_editmode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/til_password_editmode"
-        app:layout_constraintStart_toStartOf="@id/tv_label_username_editmode"
-        android:layout_marginTop="10dp"
-
-        android:text="@string/email"
-        android:textColor="@color/black"/>
-
-    <EditText
-        android:id="@+id/et_email_profile_editmode"
-        android:layout_width="325dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_label_email_editmode"
-        app:layout_constraintStart_toStartOf="@id/tv_label_username_editmode"
-        android:layout_marginTop="5dp"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="15dp"
-        android:background="@color/grey"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:inputType="textEmailAddress"
-        android:clickable="false"
-        android:focusable="false"
-        android:hint="@string/contoh_email"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/tv_label_telepon_editmode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/et_email_profile_editmode"
-        app:layout_constraintStart_toStartOf="@id/tv_label_username_editmode"
-        android:layout_marginTop="10dp"
-
         android:text="@string/no_telepon"
         android:textColor="@color/black"
-        android:inputType="none"
-        android:clickable="false"
-        android:focusable="false"
         />
 
     <EditText
@@ -188,11 +118,7 @@
         android:background="@color/grey"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:inputType="none"
-        android:clickable="false"
-        android:focusable="false"
-        android:hint="@string/contoh_no_telepon"
-        android:importantForAutofill="no" />
+        android:hint="@string/contoh_no_telepon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
