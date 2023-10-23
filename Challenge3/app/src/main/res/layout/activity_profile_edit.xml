@@ -83,7 +83,7 @@
         android:layout_marginTop="5dp"
         android:paddingVertical="10dp"
         android:paddingHorizontal="15dp"
-        android:background="@color/grey"
+        android:background="@drawable/shape_rounded_corner_edittext"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:inputType="text"
@@ -115,7 +115,7 @@
         android:layout_marginTop="5dp"
         android:paddingVertical="10dp"
         android:paddingHorizontal="15dp"
-        android:background="@color/grey"
+        android:background="@drawable/shape_rounded_corner_edittext"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:hint="@string/contoh_no_telepon" />

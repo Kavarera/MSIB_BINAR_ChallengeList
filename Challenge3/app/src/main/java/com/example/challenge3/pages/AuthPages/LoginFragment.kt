@@ -127,9 +127,6 @@ class LoginFragment : Fragment() {
                 binding.etPasswordLogin.error="Please fill this part"
 
             }
-//            findNavController().popBackStack()
-//            mainViewModel.setVisibleBottomNav(true)
-//            findNavController().navigate(R.id.menuFragment)
         }
 
         binding.tvRegister.setOnClickListener{
