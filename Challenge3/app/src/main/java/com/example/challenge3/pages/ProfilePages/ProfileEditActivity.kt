@@ -22,7 +22,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
     private lateinit var binding:ActivityProfileEditBinding
     private val viewModel by viewModels<ProfileEditViewModel>()
 
-    private  var user:User? =null
+    private var user:User? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityProfileEditBinding.inflate(layoutInflater)
@@ -31,19 +31,24 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
 
         binding.etUsernameProfileEditmode.setText(user?.username)
         binding.etTeleponProfileEditmode.setText(user?.telepon)
+        binding.etEmailEditmode.setText(user?.email)
 
         binding.ibCancelEditProfile.setOnClickListener {
             finish()
         }
 
         binding.ivConfirmEditprofile.setOnClickListener {
-            ShowReauthenticateDialog()
-//            val newUser = User(user!!.username,user.email,user.telepon)
-//            Log.d("Firebase","${newUser.username}---${user.username}")
+
+            if(binding.etEmailEditmode.text.toString()!=user?.email ||
+                !binding.etPasswordEditmode.text.toString().isNullOrEmpty()){
+                ShowReauthenticateDialog()
+            }
+//            val newUser = User(user!!.username,user!!.email,user!!.telepon)
+//            Log.d("Firebase","${newUser.username}---${user!!.username}")
 //            newUser.username=binding.etUsernameProfileEditmode.text.toString()
 //            newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-//            Log.d("Firebase","${newUser.username}---${user.username}")
-//            viewModel.updateProfile(user,newUser)
+//            Log.d("Firebase","${newUser.username}---${user!!.username}")
+//            viewModel.updateProfile(user!!,newUser)
         }
 
 
@@ -57,8 +62,20 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
     }
 
     fun EditAuth(oldPassword:String){
-        val newUser = User(user!!.username, user!!.email, user!!.telepon)
-        viewModel.updateAuth(user!!,newUser,oldPassword,"1234567890")
+        val newUser = User(user!!.username,
+            binding.etEmailEditmode.text.toString(),
+            user!!.telepon)
+
+        if(oldPassword!=binding.etPasswordEditmode.text.toString()&&!binding.etPasswordEditmode.text.toString().isNullOrEmpty()){
+            Log.d("profile edit","Updating password")
+            viewModel.updateAuthPassword(user!!,newUser,oldPassword,
+                binding.etPasswordEditmode.text.toString())
+        }
+        if(binding.etEmailEditmode.text.toString()!=user!!.email){
+            Log.d("profile edit","Updating email ${user!!.email} -----> ${newUser.email}")
+            viewModel.updateAuthEmail(user!!,newUser,oldPassword)
+        }
+
     }
 
     override fun onDataReceived(data: String) {

@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.lang.Exception
 
 class ProfileEditViewModel:ViewModel() {
 
@@ -47,7 +48,7 @@ class ProfileEditViewModel:ViewModel() {
         }
 
     }
-        fun updateAuth(old: User,new:User,oldPassword:String,newPassword:String){
+        fun updateAuthPassword(old: User,new:User,oldPassword:String,newPassword:String){
             viewModelScope.launch(Dispatchers.IO) {
                 val credential = EmailAuthProvider.getCredential(
                     old.email,oldPassword
@@ -69,7 +70,7 @@ class ProfileEditViewModel:ViewModel() {
                                 }
                         }
                         else{
-                            Log.d("Firebase","Failed to reauthenticate\n${old.email}--$newPassword\n${credential==null}")
+                            Log.d("Firebase","Failed to reauthenticate")
                         }
                     }
 
@@ -78,4 +79,30 @@ class ProfileEditViewModel:ViewModel() {
             }
 
         }
+    fun updateAuthEmail(old:User,new:User,oldPassword: String){
+        Log.d("Firebase","${old.email} ->>>> ${new.email} pass = $oldPassword")
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val credential=EmailAuthProvider.getCredential(
+                    old.email,oldPassword
+                )
+
+                FirebaseAuth.getInstance().currentUser?.reauthenticate(credential)
+                    ?.addOnCompleteListener {
+                        if(it.isSuccessful){
+                            FirebaseAuth.getInstance().currentUser
+                                ?.updateEmail(new.email)
+                                ?.addOnFailureListener {
+                                    Log.d("Firebase Exception",it.message.toString())
+                                }
+                        }
+                        else{
+                            Log.d("Firebase","Failed to reauthenticate")
+                        }
+                    }
+            } catch (e:Exception){
+                Log.d("Firebase Exception",e.message.toString())
+            }
+        }
+    }
 }
