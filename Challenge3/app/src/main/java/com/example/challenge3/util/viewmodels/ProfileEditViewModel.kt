@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
+import com.google.firebase.auth.EmailAuthCredential
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -43,5 +45,37 @@ class ProfileEditViewModel:ViewModel() {
                     }
                 }
         }
+
     }
+        fun updateAuth(old: User,new:User,oldPassword:String,newPassword:String){
+            viewModelScope.launch(Dispatchers.IO) {
+                val credential = EmailAuthProvider.getCredential(
+                    old.email,oldPassword
+                )
+
+                FirebaseAuth.getInstance().currentUser?.reauthenticate(credential)
+                    ?.addOnCompleteListener {
+                        if(it.isSuccessful){
+                            FirebaseAuth.getInstance().currentUser
+                                ?.updatePassword(newPassword)
+                                ?.addOnCompleteListener {result->
+                                    if(result.isSuccessful){
+                                        Log.d("Firebase","Succesfully update password")
+                                    }
+                                    else{
+                                        Log.d("Firebase","Failed to update password")
+
+                                    }
+                                }
+                        }
+                        else{
+                            Log.d("Firebase","Failed to reauthenticate\n${old.email}--$newPassword\n${credential==null}")
+                        }
+                    }
+
+
+
+            }
+
+        }
 }

@@ -57,6 +57,9 @@
     <string name="empty_carts">Empty Carts</string>
     <string name="back_button">back button</string>
     <string name="decrease_item">decrease item</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="confirm">Confirm</string>
+    <string name="input_your_old_password">Input Your Old Password</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>
