@@ -112,6 +112,8 @@
             android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
             android:background="@drawable/shape_rounded_corner_edittext"
             android:imeOptions="actionDone"
+            android:clickable="false"
+            android:focusable="false"
             />
 
 

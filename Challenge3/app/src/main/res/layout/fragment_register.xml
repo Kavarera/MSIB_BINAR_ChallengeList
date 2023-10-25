@@ -88,6 +88,7 @@
             android:drawableEnd="@drawable/baseline_call_24"
             android:background="@drawable/shape_rounded_corner_edittext"
             android:inputType="phone"
+            android:imeOptions="actionDone"
             />
 
         <Button

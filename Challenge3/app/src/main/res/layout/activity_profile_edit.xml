@@ -91,7 +91,8 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="text"
-            android:hint="@string/kavarera" />
+            android:hint="@string/kavarera"
+            android:imeOptions="actionDone"/>
 
 
         <TextView
@@ -119,6 +120,7 @@
             android:textColorHint="@color/black"
             android:inputType="textPassword"
             android:hint="@string/new_password"
+            android:imeOptions="actionDone"
             />
 
 <!--        <TextView-->
@@ -176,6 +178,7 @@
             android:background="@drawable/shape_rounded_corner_edittext"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:imeOptions="actionDone"
             android:hint="@string/contoh_no_telepon" />
 
 
