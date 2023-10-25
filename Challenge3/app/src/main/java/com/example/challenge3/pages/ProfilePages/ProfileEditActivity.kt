@@ -71,10 +71,10 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
             viewModel.updateAuthPassword(user!!,newUser,oldPassword,
                 binding.etPasswordEditmode.text.toString())
         }
-        if(binding.etEmailEditmode.text.toString()!=user!!.email){
-            Log.d("profile edit","Updating email ${user!!.email} -----> ${newUser.email}")
-            viewModel.updateAuthEmail(user!!,newUser,oldPassword)
-        }
+//        if(binding.etEmailEditmode.text.toString()!=user!!.email){
+//            Log.d("profile edit","Updating email ${user!!.email} -----> ${newUser.email}")
+//            viewModel.updateAuthEmail(user!!,newUser,oldPassword)
+//        }
 
     }
 

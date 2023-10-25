@@ -86,7 +86,6 @@ class ProfileEditViewModel:ViewModel() {
                 val credential=EmailAuthProvider.getCredential(
                     old.email,oldPassword
                 )
-
                 FirebaseAuth.getInstance().currentUser?.reauthenticate(credential)
                     ?.addOnCompleteListener {
                         if(it.isSuccessful){

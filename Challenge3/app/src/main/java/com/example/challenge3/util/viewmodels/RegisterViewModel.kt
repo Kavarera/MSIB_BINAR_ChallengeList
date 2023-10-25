@@ -55,13 +55,15 @@ class RegisterViewModel(application:Application): ViewModel() {
                     email,password
                 ).addOnCompleteListener {
                     if(it.isSuccessful){
+
                         saveUserData(user)
                         Log.d("Firebase","berhasil auth create")
+                        Firebase.auth.currentUser?.sendEmailVerification()
                     }
                     else{
                         Log.d("Firebase","Gagal auth create")
                     }
-                }.await()
+                }
             }
         } catch (e:Exception){
             Log.d("Firebase",e.message.toString())

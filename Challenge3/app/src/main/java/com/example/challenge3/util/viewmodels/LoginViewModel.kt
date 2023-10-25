@@ -71,6 +71,7 @@ class LoginViewModel(application: Application): ViewModel() {
                                 PreferencesHelper.getInstance(context)
                                     .saveUser(context,user)
                                 Log.d("Login","Login Success on vm also success saving sharedpreferences")
+                                
                                 _IsLogin.postValue(true)
                             }
                             else{
