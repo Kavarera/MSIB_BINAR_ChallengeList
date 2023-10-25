@@ -13,6 +13,7 @@ import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.ActivityFoodDetailBinding
 import com.example.challenge3.models.Food
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.FoodDetailViewModel
 import com.example.challenge3.util.viewmodels.FoodViewModel
@@ -69,6 +70,7 @@ class FoodDetailActivity : AppCompatActivity() {
             foodViewModel.insertFood(foodKeranjang)
 
             Toast.makeText(this,"Berhasil Menambahkan ke keranjang",Toast.LENGTH_SHORT).show()
+            ShowSnackbarCustom("Berhasil Menambahkan Ke keranjang","Add Success",200,binding.root)
         }
 
         foodDetailViewModel.totalItem.observe(this){

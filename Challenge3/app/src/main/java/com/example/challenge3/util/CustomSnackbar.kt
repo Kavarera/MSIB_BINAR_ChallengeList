@@ -14,7 +14,7 @@ import com.example.challenge3.R
 import com.example.challenge3.databinding.CustomSnackbarBinding
 import com.google.android.material.snackbar.Snackbar
 
-fun View.ShowSnackbarCustom(message:String?, title:String, type:Int, view:View){
+fun ShowSnackbarCustom(message:String?, title:String, type:Int, view:View){
     val snackbar = Snackbar.make(view,"",Snackbar.LENGTH_LONG)
 
 
@@ -37,6 +37,25 @@ fun View.ShowSnackbarCustom(message:String?, title:String, type:Int, view:View){
             val drawable = ContextCompat.getDrawable(view.context,R.drawable.shape_rounded_corner_edittext)
 
             drawable?.setColorFilter(Color.RED,PorterDuff.Mode.MULTIPLY)
+
+
+            binding.mcvSnackbar.background=drawable
+            snackbar.setBackgroundTint(Color.TRANSPARENT)
+
+
+            customSnackbarBinding?.addView(binding.root)
+        }
+        200->{
+            val binding = CustomSnackbarBinding.inflate(LayoutInflater.from(view.context))
+            binding.ivLogoSnackbar.setImageResource(R.drawable.ic_baseline_check_24)
+            binding.tvTitleSnackbar.text=title
+            binding.tvTitleSnackbar.setTextColor(Color.WHITE)
+            binding.tvDescriptionSnackbar.text=message
+            binding.tvDescriptionSnackbar.setTextColor(Color.WHITE)
+
+            val drawable = ContextCompat.getDrawable(view.context,R.drawable.shape_rounded_corner_edittext)
+
+            drawable?.setColorFilter(Color.GREEN,PorterDuff.Mode.MULTIPLY)
 
 
             binding.mcvSnackbar.background=drawable

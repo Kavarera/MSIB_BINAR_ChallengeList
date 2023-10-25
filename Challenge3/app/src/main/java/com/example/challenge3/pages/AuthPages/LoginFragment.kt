@@ -106,7 +106,7 @@ class LoginFragment : Fragment() {
 //                    Toast.makeText(requireContext(),
 //                        "Invalid credentials",Toast.LENGTH_LONG).show()
 
-                    view?.ShowSnackbarCustom("Invalid Credentials","Login Failed", 400,requireView())
+                    ShowSnackbarCustom("Invalid Credentials","Login Failed", 400,requireView())
 
                 }
 
