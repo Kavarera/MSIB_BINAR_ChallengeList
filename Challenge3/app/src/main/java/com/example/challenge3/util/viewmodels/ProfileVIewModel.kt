@@ -14,6 +14,7 @@ class ProfileVIewModel:ViewModel() {
 
     fun getUserData(context: Context){
         _User.postValue(PreferencesHelper.getInstance(context)
-            .getUser(context))
+            .getUser()
+        )
     }
 }

@@ -11,7 +11,6 @@ import com.example.challenge3.database.repository.FoodKeranjangRepository
 import com.example.challenge3.models.enumclass.EnumMetodePembayaran
 import com.example.challenge3.models.enumclass.EnumMetodePengiriman
 import com.example.challenge3.models.FoodKeranjang
-import com.example.challenge3.models.User
 import com.example.challenge3.util.networking.ApiRetrofit.ApiService
 import com.example.challenge3.util.networking.Request.OrderRequest
 import com.example.challenge3.util.networking.Request.OrdersItem
@@ -45,7 +44,7 @@ class KonfirmasiPesananViewModel(private val api:ApiService,application:Applicat
         viewModelScope.launch(Dispatchers.IO){
             try {
                 val user = PreferencesHelper.getInstance(context)
-                    .getUser(context)
+                    .getUser()
                 val orderRequest = OrderRequest(
                     total,foods,user?.username!!
                 )

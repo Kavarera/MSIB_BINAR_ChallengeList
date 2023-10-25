@@ -1,14 +1,10 @@
 package com.example.challenge3.pages.ProfilePages
 
-import android.app.Activity
-import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentManager
-import com.example.challenge3.R
 import com.example.challenge3.databinding.ActivityProfileEditBinding
 import com.example.challenge3.models.User
 import com.example.challenge3.models.interfaces.DialogReauthenticateListener
@@ -16,8 +12,6 @@ import com.example.challenge3.pages.Dialogs.DialogReauthenticate
 import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.preferences.PreferencesHelper
 import com.example.challenge3.util.viewmodels.ProfileEditViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
     private lateinit var binding:ActivityProfileEditBinding
@@ -28,7 +22,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         super.onCreate(savedInstanceState)
         binding=ActivityProfileEditBinding.inflate(layoutInflater)
         user = PreferencesHelper.getInstance(this)
-            .getUser(this)
+            .getUser()
 
         binding.etUsernameProfileEditmode.setText(user?.username)
         binding.etTeleponProfileEditmode.setText(user?.telepon)
@@ -52,7 +46,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
                     val newUser = User(user!!.username,user!!.email,user!!.telepon)
                     newUser.username=binding.etUsernameProfileEditmode.text.toString()
                     newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-                    PreferencesHelper.getInstance(this).saveUser(this,newUser)
+                    PreferencesHelper.getInstance(this).saveUser(newUser)
                     finish()
                 }
             }

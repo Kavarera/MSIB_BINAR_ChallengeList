@@ -2,7 +2,6 @@ package com.example.challenge3.util.viewmodels
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +10,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
 import com.example.challenge3.util.preferences.PreferencesHelper
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Deferred
@@ -69,7 +67,7 @@ class LoginViewModel(application: Application): ViewModel() {
                         .addOnCompleteListener {
                             if(it.isSuccessful){
                                 PreferencesHelper.getInstance(context)
-                                    .saveUser(context,user)
+                                    .saveUser(user)
                                 Log.d("Login","Login Success on vm also success saving sharedpreferences")
                                 
                                 _IsLogin.postValue(true)

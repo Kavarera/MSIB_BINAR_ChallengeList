@@ -31,17 +31,17 @@ class PreferencesHelper private constructor(context: Context) {
             sharedPreferences.edit().putInt(KEY_APP_LAYOUT_SETTING,value).apply()
         }
 
-    fun saveUser(context: Context,user:User){
+    fun saveUser(user: User){
         sharedPreferences.edit()
             .putString(KEY_APP_USER,Gson().toJson(user)).apply()
     }
-    fun getUser(context: Context):User?{
+    fun getUser():User?{
         val jsonString= sharedPreferences.getString(KEY_APP_USER,null)
         return jsonString?.let {
             User.fromJson(it)
         }
     }
-    fun clearUser(context: Context){
+    fun clearUser() {
         sharedPreferences.edit()
             .remove(KEY_APP_USER).apply()
     }
