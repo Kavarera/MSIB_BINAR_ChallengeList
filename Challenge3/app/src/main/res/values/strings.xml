@@ -61,6 +61,8 @@
     <string name="confirm">Confirm</string>
     <string name="input_your_old_password">Input Your Old Password</string>
     <string name="new_password">New Password</string>
+    <string name="sign_out">Sign out</string>
+    <string name="title_snackbar">Title Snackbar</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>

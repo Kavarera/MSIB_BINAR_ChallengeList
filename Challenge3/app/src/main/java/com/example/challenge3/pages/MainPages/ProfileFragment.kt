@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
 
         viewModel.User.observe(viewLifecycleOwner){
             binding.etUsernameProfile.setText(it?.username)
-            binding.etEmailProfile.setText(it?.email)
+            //binding.etEmailProfile.setText(it?.email)
             binding.etTeleponProfile.setText(it?.telepon)
         }
 

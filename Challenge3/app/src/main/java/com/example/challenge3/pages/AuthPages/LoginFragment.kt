@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
 import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentLoginBinding
+import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.LoginViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
@@ -102,8 +103,10 @@ class LoginFragment : Fragment() {
             }
             else{
                 if(beforeNotif){
-                    Toast.makeText(requireContext(),
-                        "Invalid credentials",Toast.LENGTH_LONG).show()
+//                    Toast.makeText(requireContext(),
+//                        "Invalid credentials",Toast.LENGTH_LONG).show()
+
+                    view?.ShowSnackbarCustom("Invalid Credentials","Login Failed", 400,requireView())
 
                 }
 

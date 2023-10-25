@@ -31,7 +31,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
 
         binding.etUsernameProfileEditmode.setText(user?.username)
         binding.etTeleponProfileEditmode.setText(user?.telepon)
-        binding.etEmailEditmode.setText(user?.email)
+        //binding.etEmailEditmode.setText(user?.email)
 
         binding.ibCancelEditProfile.setOnClickListener {
             finish()
@@ -39,16 +39,18 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
 
         binding.ivConfirmEditprofile.setOnClickListener {
 
-            if(binding.etEmailEditmode.text.toString()!=user?.email ||
-                !binding.etPasswordEditmode.text.toString().isNullOrEmpty()){
+            if(!binding.etPasswordEditmode.text.toString().isNullOrEmpty())
+            {
                 ShowReauthenticateDialog()
             }
-//            val newUser = User(user!!.username,user!!.email,user!!.telepon)
-//            Log.d("Firebase","${newUser.username}---${user!!.username}")
-//            newUser.username=binding.etUsernameProfileEditmode.text.toString()
-//            newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-//            Log.d("Firebase","${newUser.username}---${user!!.username}")
-//            viewModel.updateProfile(user!!,newUser)
+
+            //for update firestore
+            val newUser = User(user!!.username,user!!.email,user!!.telepon)
+            Log.d("Firebase","${newUser.username}---${user!!.username}")
+            newUser.username=binding.etUsernameProfileEditmode.text.toString()
+            newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
+            Log.d("Firebase","${newUser.username}---${user!!.username}")
+            viewModel.updateProfile(user!!,newUser)
         }
 
 
@@ -63,7 +65,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
 
     fun EditAuth(oldPassword:String){
         val newUser = User(user!!.username,
-            binding.etEmailEditmode.text.toString(),
+            user!!.email,
             user!!.telepon)
 
         if(oldPassword!=binding.etPasswordEditmode.text.toString()&&!binding.etPasswordEditmode.text.toString().isNullOrEmpty()){
