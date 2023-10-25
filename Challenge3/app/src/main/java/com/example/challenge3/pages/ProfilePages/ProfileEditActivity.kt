@@ -44,6 +44,10 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
                    ShowSnackbarCustom(message = null, title = "Failed to update",400,binding.root)
                     binding.ivConfirmEditprofile.visibility=View.VISIBLE
                 }
+                2->{
+                    binding.ivConfirmEditprofile.visibility=View.INVISIBLE
+                    binding.ibCancelEditProfile.visibility=View.INVISIBLE
+                }
                 1->{
                     val newUser = User(user!!.username,user!!.email,user!!.telepon)
                     newUser.username=binding.etUsernameProfileEditmode.text.toString()
@@ -55,7 +59,6 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         }
 
         binding.ivConfirmEditprofile.setOnClickListener {
-            binding.ivConfirmEditprofile.visibility=View.INVISIBLE
 
             if(!binding.etPasswordEditmode.text.toString().isNullOrEmpty())
             {
@@ -63,7 +66,7 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
             }
 
             else{
-                //for update firestore
+                //for update firestore only
                 val newUser = User(user!!.username,user!!.email,user!!.telepon)
                 Log.d("Firebase","${newUser.username}---${user!!.username}")
                 newUser.username=binding.etUsernameProfileEditmode.text.toString()
@@ -87,6 +90,8 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         val newUser = User(user!!.username,
             user!!.email,
             user!!.telepon)
+        newUser.username=binding.etUsernameProfileEditmode.text.toString()
+        newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
 
         if(oldPassword!=binding.etPasswordEditmode.text.toString()&&!binding.etPasswordEditmode.text.toString().isNullOrEmpty()){
             Log.d("profile edit","Updating password")

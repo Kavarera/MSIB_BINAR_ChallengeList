@@ -33,11 +33,24 @@ class ProfileEditViewModel:ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             updateStateStatus(2)
             Firebase.firestore.collection("data-msib-restaurant")
+                .document(old.username)
+                .delete()
+                .addOnCompleteListener {
+                    if(it.isSuccessful){
+                        Log.d("Firebase","Berhasil delete")
+                    }
+                    else{
+                        Log.d("Firebase","Gagal delete")
+                        updateStateStatus(3)
+                    }
+                }
+            Firebase.firestore.collection("data-msib-restaurant")
                 .document(new.username)
                 .set(new)
                 .addOnCompleteListener {
                     if(it.isSuccessful){
                         Log.d("Firebase","Berhasil update")
+                        updateStateStatus(1)
                     }
                     else{
                         Log.d("Firebase","Gagal update")
@@ -45,19 +58,6 @@ class ProfileEditViewModel:ViewModel() {
                     }
                 }
 
-            Firebase.firestore.collection("data-msib-restaurant")
-                .document(old.username)
-                .delete()
-                .addOnCompleteListener {
-                    if(it.isSuccessful){
-                        Log.d("Firebase","Berhasil delete")
-                        updateStateStatus(1)
-                    }
-                    else{
-                        Log.d("Firebase","Gagal delete")
-                        updateStateStatus(3)
-                    }
-                }
         }
 
     }
@@ -76,7 +76,7 @@ class ProfileEditViewModel:ViewModel() {
                                 ?.addOnCompleteListener {result->
                                     if(result.isSuccessful){
                                         Log.d("Firebase","Succesfully update password")
-                                        updateProfile(old,new)
+                                        updateProfile(old=old,new=new)
                                     }
                                     else{
                                         Log.d("Firebase","Failed to update password")
@@ -95,31 +95,6 @@ class ProfileEditViewModel:ViewModel() {
             }
 
         }
-    fun updateAuthEmail(old:User,new:User,oldPassword: String){
-        Log.d("Firebase","${old.email} ->>>> ${new.email} pass = $oldPassword")
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val credential=EmailAuthProvider.getCredential(
-                    old.email,oldPassword
-                )
-                FirebaseAuth.getInstance().currentUser?.reauthenticate(credential)
-                    ?.addOnCompleteListener {
-                        if(it.isSuccessful){
-                            FirebaseAuth.getInstance().currentUser
-                                ?.updateEmail(new.email)
-                                ?.addOnFailureListener {
-                                    Log.d("Firebase Exception",it.message.toString())
-                                }
-                        }
-                        else{
-                            Log.d("Firebase","Failed to reauthenticate")
-                        }
-                    }
-            } catch (e:Exception){
-                Log.d("Firebase Exception",e.message.toString())
-            }
-        }
-    }
     fun updateStateStatus(status:Int){
         _isUpdate.postValue(status)
     }

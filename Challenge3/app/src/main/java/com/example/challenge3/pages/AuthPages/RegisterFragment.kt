@@ -71,8 +71,8 @@ class RegisterFragment : Fragment() {
             if(binding.etPasswordRegister.text.toString().length<=6){
                 binding.etPasswordRegister.error = "At least more than 6 char"
             }
-            else if(binding.etUsernameRegister.text.toString().length<=10){
-                binding.etUsernameRegister.error = "At least more than 10 char"
+            else if(binding.etUsernameRegister.text.toString().length<=5){
+                binding.etUsernameRegister.error = "At least more than 5 char"
             }
             else if(binding.etTeleponRegister.text.toString().length<=11){
                 binding.etTeleponRegister.error = "At least more than 11 char"

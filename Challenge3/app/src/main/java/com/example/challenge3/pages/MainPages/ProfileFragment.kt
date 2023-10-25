@@ -38,4 +38,9 @@ class ProfileFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUserData(requireContext())
+    }
 }
