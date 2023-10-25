@@ -13,6 +13,7 @@ import com.example.challenge3.databinding.ActivityProfileEditBinding
 import com.example.challenge3.models.User
 import com.example.challenge3.models.interfaces.DialogReauthenticateListener
 import com.example.challenge3.pages.Dialogs.DialogReauthenticate
+import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.preferences.PreferencesHelper
 import com.example.challenge3.util.viewmodels.ProfileEditViewModel
 import com.google.firebase.auth.ktx.auth
@@ -37,20 +38,39 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
             finish()
         }
 
+        viewModel.isUpdate.observe(this){
+            when(it){
+                3->{
+                   ShowSnackbarCustom(message = null, title = "Failed to update",400,binding.root)
+                    binding.ivConfirmEditprofile.visibility=View.VISIBLE
+                }
+                1->{
+                    val newUser = User(user!!.username,user!!.email,user!!.telepon)
+                    newUser.username=binding.etUsernameProfileEditmode.text.toString()
+                    newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
+                    PreferencesHelper.getInstance(this).saveUser(this,newUser)
+                    finish()
+                }
+            }
+        }
+
         binding.ivConfirmEditprofile.setOnClickListener {
+            binding.ivConfirmEditprofile.visibility=View.INVISIBLE
 
             if(!binding.etPasswordEditmode.text.toString().isNullOrEmpty())
             {
                 ShowReauthenticateDialog()
             }
 
-            //for update firestore
-            val newUser = User(user!!.username,user!!.email,user!!.telepon)
-            Log.d("Firebase","${newUser.username}---${user!!.username}")
-            newUser.username=binding.etUsernameProfileEditmode.text.toString()
-            newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-            Log.d("Firebase","${newUser.username}---${user!!.username}")
-            viewModel.updateProfile(user!!,newUser)
+            else{
+                //for update firestore
+                val newUser = User(user!!.username,user!!.email,user!!.telepon)
+                Log.d("Firebase","${newUser.username}---${user!!.username}")
+                newUser.username=binding.etUsernameProfileEditmode.text.toString()
+                newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
+                Log.d("Firebase","${newUser.username}---${user!!.username}")
+                viewModel.updateProfile(user!!,newUser)
+            }
         }
 
 

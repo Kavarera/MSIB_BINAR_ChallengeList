@@ -69,7 +69,6 @@ class FoodDetailActivity : AppCompatActivity() {
 //            )
             foodViewModel.insertFood(foodKeranjang)
 
-            Toast.makeText(this,"Berhasil Menambahkan ke keranjang",Toast.LENGTH_SHORT).show()
             ShowSnackbarCustom("Berhasil Menambahkan Ke keranjang","Add Success",200,binding.root)
         }
 
