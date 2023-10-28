@@ -23,15 +23,16 @@ import com.example.challenge3.models.enumclass.EnumMetodePengiriman
 import com.example.challenge3.models.FoodKeranjang
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.networking.Request.OrdersItem
-import com.example.challenge3.util.viewmodels.FoodViewModel
+import com.example.challenge3.util.viewmodels.KeranjangViewModel
 import com.example.challenge3.util.viewmodels.KonfirmasiPesananViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
+import org.koin.android.ext.android.inject
 
 class KonfirmasiPesananFragment : Fragment() {
 
-    private lateinit var foodViewModel: FoodViewModel
-    private lateinit var keranjangViewModel: KonfirmasiPesananViewModel
-    private lateinit var mainViewModel: MainActivityViewModel
+    private val foodViewModel: KeranjangViewModel by inject()
+    private val keranjangViewModel: KonfirmasiPesananViewModel by inject()
+    private val mainViewModel: MainActivityViewModel by inject()
     private lateinit var binding:FragmentKonfirmasiPesananBinding
     private lateinit var listPesanan:LiveData<List<FoodKeranjang>>
     private lateinit var adapter: KeranjangRecyclerViewAdapter
@@ -42,17 +43,13 @@ class KonfirmasiPesananFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        foodViewModel = ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application,ApiClient.instance)
-        )
-            .get(FoodViewModel::class.java)
 
-        keranjangViewModel=ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application,ApiClient.instance)
-        )
-            .get(KonfirmasiPesananViewModel::class.java)
+//        keranjangViewModel=ViewModelProvider(requireActivity(),
+//            PageViewModelFactory(requireActivity().application,ApiClient.instance)
+//        )
+//            .get(KonfirmasiPesananViewModel::class.java)
 
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
+//        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         mainViewModel.setVisibleBottomNav(false)
 
     }

@@ -1,11 +1,7 @@
 package com.example.challenge3.pages.FoodDetailPages
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -16,19 +12,20 @@ import com.example.challenge3.models.FoodKeranjang
 import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.FoodDetailViewModel
-import com.example.challenge3.util.viewmodels.FoodViewModel
+import com.example.challenge3.util.viewmodels.KeranjangViewModel
+import org.koin.android.ext.android.inject
 
 class FoodDetailActivity : AppCompatActivity() {
     private lateinit var binding:ActivityFoodDetailBinding
-    private lateinit var foodViewModel: FoodViewModel
+    private val foodViewModel: KeranjangViewModel by inject()
     private val foodDetailViewModel by viewModels<FoodDetailViewModel>()
     private var totalitem:Int =1
     private var totalPrice:Int =1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModelFactory = PageViewModelFactory(this.application, ApiClient.instance)
-        foodViewModel = ViewModelProvider(this,viewModelFactory).get(FoodViewModel::class.java)
+//        val viewModelFactory = PageViewModelFactory(this.application, ApiClient.instance)
+//        foodViewModel = ViewModelProvider(this,viewModelFactory).get(KeranjangViewModel::class.java)
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
         val foodData: Food = intent.getParcelableExtra("data")!!
 

@@ -2,16 +2,13 @@ package com.example.challenge3.util.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.challenge3.database.DatabaseApp
-import com.example.challenge3.database.dao.IFoodKeranjangDao
 import com.example.challenge3.database.repository.FoodKeranjangRepository
-import com.example.challenge3.models.Food
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.repository.MenuRepository
 
-class FoodViewModel(application: Application):ViewModel() {
-    val repository:FoodKeranjangRepository = FoodKeranjangRepository(application)
+class KeranjangViewModel(private val repository: FoodKeranjangRepository):ViewModel() {
+//    val repository:FoodKeranjangRepository = FoodKeranjangRepository(application)
     fun deleteAllFoods(){
         repository.deleteAllitem()
     }

@@ -21,16 +21,17 @@ import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.LoginViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
+import org.koin.android.ext.android.inject
 
 class LoginFragment : Fragment() {
-    private lateinit var mainViewModel: MainActivityViewModel
+    private val mainViewModel: MainActivityViewModel by inject()
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding:FragmentLoginBinding
     private var isPasswordVisible = false
     var beforeNotif = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
+//        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         mainViewModel.setVisibleBottomNav(false)
         viewModel = ViewModelProvider(
             requireActivity(),

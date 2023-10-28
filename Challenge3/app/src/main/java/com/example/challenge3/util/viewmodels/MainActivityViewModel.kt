@@ -35,33 +35,4 @@ class MainActivityViewModel():ViewModel() {
             else -> throw IllegalArgumentException("Invalid fragmentId: $fragmentId")
         }
     }
-
-    fun fetchDataCategories(){
-
-        viewModelScope.launch {
-            try{
-                val categoryResponse:CategoryResponse=ApiClient.instance.getCategory2()
-            }
-            catch (e:Exception){
-                Log.e("API",e.message.toString())
-            }
-        }
-//  Tanpa menggunakan kotlin coroutines jika tidak salah
-
-//        ApiClient.instance.getCategory()
-//            .enqueue(object: Callback<CategoryResponse> {
-//                override fun onResponse(
-//                    call: Call<CategoryResponse>,
-//                    response: Response<CategoryResponse>
-//                ) {
-//                    val body = response.body()
-//                    Log.d("testAPI",body?.message.toString())
-//                }
-//
-//                override fun onFailure(call: Call<CategoryResponse>, t: Throwable) {
-//                    Log.d("testAPI",t.message.toString())
-//                }
-//
-//            })
-    }
 }

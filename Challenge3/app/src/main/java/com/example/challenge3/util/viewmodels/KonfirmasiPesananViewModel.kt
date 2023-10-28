@@ -11,6 +11,7 @@ import com.example.challenge3.database.repository.FoodKeranjangRepository
 import com.example.challenge3.models.enumclass.EnumMetodePembayaran
 import com.example.challenge3.models.enumclass.EnumMetodePengiriman
 import com.example.challenge3.models.FoodKeranjang
+import com.example.challenge3.repository.KeranjangPesananRepository
 import com.example.challenge3.util.networking.ApiRetrofit.ApiService
 import com.example.challenge3.util.networking.Request.OrderRequest
 import com.example.challenge3.util.networking.Request.OrdersItem
@@ -20,7 +21,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class KonfirmasiPesananViewModel(private val api:ApiService,application:Application):ViewModel() {
+class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananRepository,
+                                 private val repository: FoodKeranjangRepository
+):ViewModel() {
     private val _pengiriman = MutableLiveData<EnumMetodePengiriman>()
     val pengiriman : LiveData<EnumMetodePengiriman> get() = _pengiriman
     private val _pembayaran = MutableLiveData<EnumMetodePembayaran>()
@@ -33,14 +36,13 @@ class KonfirmasiPesananViewModel(private val api:ApiService,application:Applicat
         _pengiriman.value= EnumMetodePengiriman.AMBIL_SENDIRI
         _pembayaran.value= EnumMetodePembayaran.TUNAI
     }
-    private val repository:FoodKeranjangRepository= FoodKeranjangRepository(application)
+//    private val repository:FoodKeranjangRepository= FoodKeranjangRepository(application)
 
     fun getAllFoods():LiveData<List<FoodKeranjang>>{
         return repository.allFoods()
     }
 
     fun sendOrder(context: Context, foods:List<OrdersItem>?, total:Int){
-        lateinit var oResponse:OrderResponse
         viewModelScope.launch(Dispatchers.IO){
             try {
 //                val user = PreferencesHelper.getInstance(context)
@@ -49,14 +51,17 @@ class KonfirmasiPesananViewModel(private val api:ApiService,application:Applicat
                 val orderRequest = OrderRequest(
                     total,foods,user?.username!!
                 )
-                val response = api.postOrder(orderRequest).execute()
-                oResponse = response.body() as OrderResponse
+
+                val oResponse=kpRepository.postOrder(orderRequest)
+
+//                val response = api.postOrder(orderRequest).execute()
+//                oResponse = response.body() as OrderResponse
                 if(oResponse.code==201){
                     Log.d("OrderPost","Success Post Order")
                 }
                 _isSuccesfullySubmitOrder.postValue(oResponse.code==201)
             }catch (e:Exception){
-                Log.e("OorderPost",e.message.toString())
+                Log.e("OrderPost",e.message.toString())
             }
         }
     }

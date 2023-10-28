@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.challenge3.databinding.ItemPesananKeranjangBinding
 import com.example.challenge3.models.FoodKeranjang
-import com.example.challenge3.util.viewmodels.FoodViewModel
+import com.example.challenge3.util.viewmodels.KeranjangViewModel
 
 
-class KeranjangRecyclerViewAdapter(private val context: Context,private val listFood:List<FoodKeranjang>,private val foodViewModel: FoodViewModel): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class KeranjangRecyclerViewAdapter(private val context: Context,private val listFood:List<FoodKeranjang>,private val foodViewModel: KeranjangViewModel): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ItemPesananKeranjangBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +25,7 @@ class KeranjangRecyclerViewAdapter(private val context: Context,private val list
     override fun getItemCount(): Int {
         return listFood.size
     }
-    inner class LinearPesananKeranjangHolder(private val binding: ItemPesananKeranjangBinding,private val foodViewModel: FoodViewModel):RecyclerView.ViewHolder(binding.root) {
+    inner class LinearPesananKeranjangHolder(private val binding: ItemPesananKeranjangBinding,private val foodViewModel: KeranjangViewModel):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:FoodKeranjang){
             Glide.with(context)
                 .load(item.imageUrl)

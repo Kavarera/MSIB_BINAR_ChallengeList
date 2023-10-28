@@ -15,20 +15,21 @@ import com.example.challenge3.util.adapter.KeranjangRecyclerViewAdapter
 import com.example.challenge3.databinding.FragmentKeranjangBinding
 import com.example.challenge3.models.FoodKeranjang
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
-import com.example.challenge3.util.viewmodels.FoodViewModel
+import com.example.challenge3.util.viewmodels.KeranjangViewModel
+import org.koin.android.ext.android.inject
 
 class KeranjangFragment : Fragment() {
 
-    private lateinit var foodViewModel: FoodViewModel
+    private val foodViewModel: KeranjangViewModel by inject()
     private lateinit var listPesanan:LiveData<List<FoodKeranjang>>
     private lateinit var binding :FragmentKeranjangBinding
     private lateinit var adapter: KeranjangRecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Viewmodel
-        val viewModelFactory = PageViewModelFactory(requireActivity().application,
-            ApiClient.instance)
-        foodViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(FoodViewModel::class.java)
+//        val viewModelFactory = PageViewModelFactory(requireActivity().application,
+//            ApiClient.instance)
+//        foodViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(KeranjangViewModel::class.java)
         listPesanan=foodViewModel.getAllFoods()
     }
 
