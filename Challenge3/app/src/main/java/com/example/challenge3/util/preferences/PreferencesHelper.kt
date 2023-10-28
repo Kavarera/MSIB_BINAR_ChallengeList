@@ -6,43 +6,38 @@ import com.example.challenge3.models.enumclass.EnumRecyclerViewOption
 import com.example.challenge3.models.User
 import com.google.gson.Gson
 
-class PreferencesHelper private constructor(context: Context) {
+
+
+
+object PreferencesHelper {
     private val PREF_NAME = "CHALLENGE3"
     private val KEY_APP_LAYOUT_SETTING = "MENULAYOUT"
     private val KEY_APP_USER = "USER_PREFERENCES"
+    private lateinit var prefs:SharedPreferences
 
-    private val sharedPreferences: SharedPreferences = context
-        .getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE)
-
-    companion object {
-        @Volatile
-        private var instance: PreferencesHelper? = null
-
-        fun getInstance(context: Context): PreferencesHelper {
-            return instance ?: synchronized(this) {
-                instance ?: PreferencesHelper(context).also { instance = it }
-            }
-        }
+    fun init(context: Context){
+        prefs=context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE)
     }
 
     var layoutOption:Int
-        get() = sharedPreferences.getInt(KEY_APP_LAYOUT_SETTING, EnumRecyclerViewOption.LINEAR_LAYOUT.value)
+        get() = prefs.getInt(KEY_APP_LAYOUT_SETTING, EnumRecyclerViewOption.LINEAR_LAYOUT.value)
         set(value) {
-            sharedPreferences.edit().putInt(KEY_APP_LAYOUT_SETTING,value).apply()
+            prefs.edit().putInt(KEY_APP_LAYOUT_SETTING,value).apply()
         }
 
+
     fun saveUser(user: User){
-        sharedPreferences.edit()
+        prefs.edit()
             .putString(KEY_APP_USER,Gson().toJson(user)).apply()
     }
     fun getUser():User?{
-        val jsonString= sharedPreferences.getString(KEY_APP_USER,null)
+        val jsonString= prefs.getString(KEY_APP_USER,null)
         return jsonString?.let {
             User.fromJson(it)
         }
     }
     fun clearUser() {
-        sharedPreferences.edit()
+        prefs.edit()
             .remove(KEY_APP_USER).apply()
     }
 }

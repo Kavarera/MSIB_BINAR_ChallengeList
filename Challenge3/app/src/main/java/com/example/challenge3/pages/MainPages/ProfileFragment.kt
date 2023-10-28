@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
 import com.example.challenge3.databinding.FragmentProfileBinding
 import com.example.challenge3.util.viewmodels.ProfileVIewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 
 class ProfileFragment : Fragment() {
@@ -34,6 +36,11 @@ class ProfileFragment : Fragment() {
 
         binding.btnEditProfile.setOnClickListener{
             findNavController().navigate(R.id.action_profileFragment_to_profileEditActivity)
+        }
+
+        binding.btnSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            android.os.Process.killProcess(android.os.Process.myPid())
         }
 
         return binding.root

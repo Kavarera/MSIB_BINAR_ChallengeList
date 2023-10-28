@@ -13,8 +13,6 @@ class ProfileVIewModel:ViewModel() {
     val User:LiveData<User?> get()=_User
 
     fun getUserData(context: Context){
-        _User.postValue(PreferencesHelper.getInstance(context)
-            .getUser()
-        )
+        _User.postValue(PreferencesHelper.getUser())
     }
 }

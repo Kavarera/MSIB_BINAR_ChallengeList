@@ -43,8 +43,9 @@ class KonfirmasiPesananViewModel(private val api:ApiService,application:Applicat
         lateinit var oResponse:OrderResponse
         viewModelScope.launch(Dispatchers.IO){
             try {
-                val user = PreferencesHelper.getInstance(context)
-                    .getUser()
+//                val user = PreferencesHelper.getInstance(context)
+//                    .getUser()
+                val user = PreferencesHelper.getUser()
                 val orderRequest = OrderRequest(
                     total,foods,user?.username!!
                 )

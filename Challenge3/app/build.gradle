@@ -95,12 +95,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
 
-
-    //Google Services AKA Firebase
-//    implementation platform('com.google.Firebase:Firebase-bom:32.3.1')
-//    implementation 'com.google.Firebase:Firebase-analytics'
-        //For auth
-//    implementation 'com.google.Firebase:Firebase-auth'
-//    implementation 'com.google.firebase:firebase-firestore'
+    //Koin
+    implementation ("io.insert-koin:koin-core:3.2.2")
+    implementation ("io.insert-koin:koin-android:3.3.0")
+    implementation ("io.insert-koin:koin-android-compat:3.3.0")
+    implementation ("io.insert-koin:koin-androidx-workmanager:3.3.0")
+    implementation ("io.insert-koin:koin-androidx-navigation:3.3.0")
 
 }

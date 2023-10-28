@@ -24,8 +24,9 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         super.onCreate(savedInstanceState)
         var loadingFragment = false
         binding=ActivityProfileEditBinding.inflate(layoutInflater)
-        user = PreferencesHelper.getInstance(this)
-            .getUser()
+//        user = PreferencesHelper.getInstance(this)
+//            .getUser()
+        user = PreferencesHelper.getUser()
 
         dialogLoading= DialogLoading()
 
@@ -56,7 +57,8 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
                     val newUser = User(user!!.username,user!!.email,user!!.telepon)
                     newUser.username=binding.etUsernameProfileEditmode.text.toString()
                     newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-                    PreferencesHelper.getInstance(this).saveUser(newUser)
+//                    PreferencesHelper.getInstance(this).saveUser(newUser)
+                    PreferencesHelper.saveUser(newUser)
                     dialogLoading.removeDialog()
                     finish()
                 }

@@ -68,7 +68,7 @@ class MenuFragment : Fragment() {
         binding = FragmentMenuBinding.inflate(inflater,container,false)
         rv=binding.rvMenuMakanan
 //        val rv = binding.rvMenuMakanan
-        val mySharedPreferences =  PreferencesHelper.getInstance(requireContext())
+        //val mySharedPreferences =  PreferencesHelper.getInstance(requireContext())
 
         fetchCategoriesData()
         fetchFoods()
@@ -76,7 +76,7 @@ class MenuFragment : Fragment() {
 
 
 
-        gridOption = mySharedPreferences.layoutOption
+        gridOption = PreferencesHelper.layoutOption
         rv.layoutManager = if(gridOption== EnumRecyclerViewOption.LINEAR_LAYOUT.value){
             LinearLayoutManager(requireContext())
         } else{
@@ -105,7 +105,8 @@ class MenuFragment : Fragment() {
         binding.ibGridOption.setOnClickListener {
             if(gridOption== EnumRecyclerViewOption.LINEAR_LAYOUT.value){
                 gridOption= EnumRecyclerViewOption.GRID_LAYOUT.value
-                mySharedPreferences.layoutOption=gridOption
+                //mySharedPreferences.layoutOption=gridOption
+                PreferencesHelper.layoutOption=gridOption
                 binding.ibGridOption.setImageResource(R.drawable.ic_menu)
                 rv.layoutManager = GridLayoutManager(requireContext(),2)
                 adapter = MainMenuRVAdapter(requireContext(),foodList, EnumRecyclerViewOption.GRID_LAYOUT)
@@ -122,7 +123,7 @@ class MenuFragment : Fragment() {
             }
             else{
                 gridOption= EnumRecyclerViewOption.LINEAR_LAYOUT.value
-                mySharedPreferences.layoutOption = gridOption
+                PreferencesHelper.layoutOption = gridOption
                 binding.ibGridOption.setImageResource(R.drawable.ic_list)
                 rv.layoutManager = LinearLayoutManager(requireContext())
                 adapter = MainMenuRVAdapter(requireContext(),foodList, EnumRecyclerViewOption.LINEAR_LAYOUT)
@@ -139,19 +140,6 @@ class MenuFragment : Fragment() {
             }
         }
 
-
-
-//        binding.incl1.incl11.ivItem.setImageResource(R.color.black)
-//        binding.incl1.incl11.tvNamaFood.text="Ayam"
-//
-//        binding.incl1.incl12.ivItem.setImageResource(R.color.black)
-//        binding.incl1.incl12.tvNamaFood.text="Burger"
-//
-//        binding.incl1.incl13.ivItem.setImageResource(R.color.black)
-//        binding.incl1.incl13.tvNamaFood.text="Dimsum"
-//
-//        binding.incl1.incl14.ivItem.setImageResource(R.color.black)
-//        binding.incl1.incl14.tvNamaFood.text="Es Krim"
 
 
         return binding.root

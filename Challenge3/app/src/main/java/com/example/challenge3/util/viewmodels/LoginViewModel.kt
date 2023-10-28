@@ -66,8 +66,9 @@ class LoginViewModel(application: Application): ViewModel() {
                     Firebase.auth.signInWithEmailAndPassword(user.email,password)
                         .addOnCompleteListener {
                             if(it.isSuccessful){
-                                PreferencesHelper.getInstance(context)
-                                    .saveUser(user)
+//                                PreferencesHelper.getInstance(context)
+//                                    .saveUser(user)
+                                PreferencesHelper.saveUser(user)
                                 Log.d("Login","Login Success on vm also success saving sharedpreferences")
                                 
                                 _IsLogin.postValue(true)
