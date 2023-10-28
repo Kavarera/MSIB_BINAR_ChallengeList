@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import com.example.challenge3.databinding.ActivityProfileEditBinding
 import com.example.challenge3.models.User
 import com.example.challenge3.models.interfaces.DialogReauthenticateListener
+import com.example.challenge3.pages.Dialogs.DialogLoading
 import com.example.challenge3.pages.Dialogs.DialogReauthenticate
 import com.example.challenge3.util.ShowSnackbarCustom
 import com.example.challenge3.util.preferences.PreferencesHelper
@@ -16,13 +17,17 @@ import com.example.challenge3.util.viewmodels.ProfileEditViewModel
 class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
     private lateinit var binding:ActivityProfileEditBinding
     private val viewModel by viewModels<ProfileEditViewModel>()
+    private lateinit var dialogLoading: DialogLoading
 
     private var user:User? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var loadingFragment = false
         binding=ActivityProfileEditBinding.inflate(layoutInflater)
         user = PreferencesHelper.getInstance(this)
             .getUser()
+
+        dialogLoading= DialogLoading()
 
         binding.etUsernameProfileEditmode.setText(user?.username)
         binding.etTeleponProfileEditmode.setText(user?.telepon)
@@ -39,14 +44,20 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
                     binding.ivConfirmEditprofile.visibility=View.VISIBLE
                 }
                 2->{
-                    binding.ivConfirmEditprofile.visibility=View.INVISIBLE
-                    binding.ibCancelEditProfile.visibility=View.INVISIBLE
+                    if (!loadingFragment){
+                        loadingFragment=true
+                        dialogLoading.isCancelable=false
+                        dialogLoading.show(
+                            this.supportFragmentManager,"dialogLoading"
+                        )
+                    }
                 }
                 1->{
                     val newUser = User(user!!.username,user!!.email,user!!.telepon)
                     newUser.username=binding.etUsernameProfileEditmode.text.toString()
                     newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
                     PreferencesHelper.getInstance(this).saveUser(newUser)
+                    dialogLoading.removeDialog()
                     finish()
                 }
             }
@@ -102,6 +113,16 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
     override fun onDataReceived(data: String) {
         if(data!=""){
             EditAuth(data)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.isUpdate.observe(this){
+                Log.d("onPause",it.toString())
+            if(it!=2){
+                //dialogLoading.removeDialog()
+            }
         }
     }
 }

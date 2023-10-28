@@ -63,6 +63,7 @@
     <string name="new_password">New Password</string>
     <string name="sign_out">Sign out</string>
     <string name="title_snackbar">Title Snackbar</string>
+    <string name="loading">Loading</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>
