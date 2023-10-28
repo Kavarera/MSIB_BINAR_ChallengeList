@@ -30,12 +30,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import org.koin.android.ext.android.inject
 
 class MenuFragment : Fragment() {
     //viewmodel
 
     private lateinit var binding:FragmentMenuBinding
-    private lateinit var viewModel:MenuViewModel
+    private val viewModel:MenuViewModel by inject()
     private lateinit var foodListAPI: List<Food>
     private var foodList= listOf<Food>()
     private var gridOption:Int = 0
@@ -45,19 +46,7 @@ class MenuFragment : Fragment() {
     private lateinit var adapter:MainMenuRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),ApiViewModelFactory(ApiClient.instance)).get(MenuViewModel::class.java)
-//        for(a in 1..20){
-//            val food = Food(
-//                a,
-//                "Food Name $a", // Nama makanan
-//                "Description for Food $a", // Deskripsi makanan
-//                resources.obtainTypedArray(R.array.foto_makanan).getResourceId(Random.Default.nextInt(1,13),0), // ID gambar makanan (ganti dengan ID gambar yang sesuai)
-//                "${Random.Default.nextInt(5000,50000)}",
-//                "St. Somewhere number 123, Click for more",
-//                resources.obtainTypedArray(R.array.gmaps_url).getString(Random.Default.nextInt(1,6)).toString()// Lokasi makanan
-//            )
-//            foodList.add(food)
-//        }
+//        viewModel = ViewModelProvider(requireActivity(),ApiViewModelFactory(ApiClient.instance)).get(MenuViewModel::class.java)
 
 
     }
