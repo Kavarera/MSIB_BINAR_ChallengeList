@@ -11,21 +11,17 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
-import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentLoginBinding
 import com.example.challenge3.util.ShowSnackbarCustom
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.LoginViewModel
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
 import org.koin.android.ext.android.inject
 
 class LoginFragment : Fragment() {
     private val mainViewModel: MainActivityViewModel by inject()
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by inject()
     private lateinit var binding:FragmentLoginBinding
     private var isPasswordVisible = false
     var beforeNotif = false
@@ -33,10 +29,10 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
 //        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         mainViewModel.setVisibleBottomNav(false)
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            PageViewModelFactory(requireActivity().application, ApiClient.instance)
-            ).get(LoginViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            requireActivity(),
+//            PageViewModelFactory(requireActivity().application, ApiClient.instance)
+//            ).get(LoginViewModel::class.java)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -98,7 +94,7 @@ class LoginFragment : Fragment() {
             if(it==true){
                 Log.d("Login","Berhasil Login")
 
-                findNavController().popBackStack()
+//                findNavController().popBackStack()
                 mainViewModel.setVisibleBottomNav(true)
                 findNavController().navigate(R.id.menuFragment)
             }

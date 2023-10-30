@@ -19,12 +19,12 @@ class PageViewModelFactory(private val application: Application,val apiService: 
 //        if(modelClass.isAssignableFrom(KonfirmasiPesananViewModel::class.java)){
 //            return KonfirmasiPesananViewModel(apiService,application) as T
 //        }
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(application) as T
-        }
-        if(modelClass.isAssignableFrom(RegisterViewModel::class.java)){
-            return RegisterViewModel(application) as T
-        }
+//        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+//            return LoginViewModel(application) as T
+//        }
+//        if(modelClass.isAssignableFrom(RegisterViewModel::class.java)){
+//            return RegisterViewModel(application) as T
+//        }
         throw IllegalArgumentException("Unknow ViewModel Class")
     }
 }

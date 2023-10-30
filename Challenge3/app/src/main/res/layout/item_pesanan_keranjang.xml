@@ -11,7 +11,8 @@
         android:layout_height="130dp"
         android:src="@color/black"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/tv_nama_pesanan_keranjang"
@@ -21,7 +22,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_image_pesanan_keranjang"
         app:layout_constraintTop_toTopOf="parent"
 
-        android:text="Sate Ayam"
+        android:text="@string/sate_ayam"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -46,13 +47,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:src="@drawable/ic_baseline_remove_circle_outline_24" />
+        android:src="@drawable/ic_baseline_remove_circle_outline_24"
+        android:importantForAccessibility="no" />
 
     <Button
         android:id="@+id/btn_add_item_keranjang"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="+"
+        android:text="@string/plus"
         app:layout_constraintBottom_toTopOf="@id/et_catatan_item_pesanan_keranjang"
         app:layout_constraintEnd_toEndOf="@id/iv_remove"
         android:textColor="@color/black"/>
@@ -75,7 +77,7 @@
         android:id="@+id/btn_min_item_keranjang"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="-"
+        android:text="@string/subtract"
         app:layout_constraintBottom_toTopOf="@id/et_catatan_item_pesanan_keranjang"
         app:layout_constraintEnd_toStartOf="@id/tv_total_item_pesanan_keranjang"
         android:layout_marginEnd="15dp"

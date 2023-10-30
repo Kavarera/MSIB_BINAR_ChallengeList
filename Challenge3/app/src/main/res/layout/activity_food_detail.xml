@@ -22,6 +22,7 @@
             <ImageView
                 android:id="@+id/iv_food_detail_image"
                 android:layout_width="match_parent"
+                android:contentDescription="@string/food_detail_image"
                 android:layout_height="match_parent"/>
             <ImageButton
                 android:id="@+id/ib_back"
@@ -92,6 +93,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/ic_baseline_storefront_24"
+                android:contentDescription="@string/food_detail_image"
                 />
             <TextView
                 android:id="@+id/tv_Lokasi"

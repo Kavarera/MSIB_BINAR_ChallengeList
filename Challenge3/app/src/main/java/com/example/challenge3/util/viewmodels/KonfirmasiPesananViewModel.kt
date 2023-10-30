@@ -1,6 +1,5 @@
 package com.example.challenge3.util.viewmodels
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,12 +9,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.challenge3.database.repository.FoodKeranjangRepository
 import com.example.challenge3.models.enumclass.EnumMetodePembayaran
 import com.example.challenge3.models.enumclass.EnumMetodePengiriman
-import com.example.challenge3.models.FoodKeranjang
 import com.example.challenge3.repository.KeranjangPesananRepository
-import com.example.challenge3.util.networking.ApiRetrofit.ApiService
 import com.example.challenge3.util.networking.Request.OrderRequest
 import com.example.challenge3.util.networking.Request.OrdersItem
-import com.example.challenge3.util.networking.Response.OrderResponse
 import com.example.challenge3.util.preferences.PreferencesHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,17 +32,10 @@ class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananReposi
         _pengiriman.value= EnumMetodePengiriman.AMBIL_SENDIRI
         _pembayaran.value= EnumMetodePembayaran.TUNAI
     }
-//    private val repository:FoodKeranjangRepository= FoodKeranjangRepository(application)
-
-    fun getAllFoods():LiveData<List<FoodKeranjang>>{
-        return repository.allFoods()
-    }
 
     fun sendOrder(context: Context, foods:List<OrdersItem>?, total:Int){
         viewModelScope.launch(Dispatchers.IO){
             try {
-//                val user = PreferencesHelper.getInstance(context)
-//                    .getUser()
                 val user = PreferencesHelper.getUser()
                 val orderRequest = OrderRequest(
                     total,foods,user?.username!!

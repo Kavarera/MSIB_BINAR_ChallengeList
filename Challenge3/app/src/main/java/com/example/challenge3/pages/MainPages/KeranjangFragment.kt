@@ -6,15 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge3.R
-import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.util.adapter.KeranjangRecyclerViewAdapter
 import com.example.challenge3.databinding.FragmentKeranjangBinding
 import com.example.challenge3.models.FoodKeranjang
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.KeranjangViewModel
 import org.koin.android.ext.android.inject
 
@@ -62,7 +59,7 @@ class KeranjangFragment : Fragment() {
                 t = it.quantity * it.harga
                 totalPrice +=t
             }
-            binding.tvTotalHargaPesanan.text="Rp. ${totalPrice.toString()}"
+            binding.tvTotalHargaPesanan.text="Rp. $totalPrice"
             adapter = KeranjangRecyclerViewAdapter(requireContext(),item,foodViewModel)
             recyclerView.adapter=adapter
             recyclerView.layoutManager=LinearLayoutManager(requireContext())

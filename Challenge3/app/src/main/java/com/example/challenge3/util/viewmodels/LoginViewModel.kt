@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
-class LoginViewModel(application: Application): ViewModel() {
+class LoginViewModel(): ViewModel() {
     private val _username =MutableLiveData<String>()
     val username:LiveData<String> get()=_username
     private val _password = MutableLiveData<String>()

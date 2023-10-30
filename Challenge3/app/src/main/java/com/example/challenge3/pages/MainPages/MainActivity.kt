@@ -2,25 +2,16 @@ package com.example.challenge3.pages.MainPages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.challenge3.R
 import com.example.challenge3.databinding.ActivityMainBinding
 import com.example.challenge3.models.enumclass.EnumListFragment
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
-import com.example.challenge3.util.networking.Response.CategoryResponse
 import com.example.challenge3.util.viewmodels.MainActivityViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import org.koin.android.ext.android.inject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

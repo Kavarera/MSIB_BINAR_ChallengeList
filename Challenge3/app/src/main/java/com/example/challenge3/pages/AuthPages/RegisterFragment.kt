@@ -9,28 +9,25 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.databinding.FragmentRegisterBinding
 import com.example.challenge3.models.User
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 import java.util.regex.Pattern
 
 class RegisterFragment : Fragment() {
     private lateinit var binding:FragmentRegisterBinding
-    private lateinit var viewModel: RegisterViewModel
+    private val viewModel: RegisterViewModel by inject()
 
     private var isPasswordVisible=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),
-            PageViewModelFactory(requireActivity().application, ApiClient.instance)
-        )
-            .get(RegisterViewModel::class.java)
+//        viewModel = ViewModelProvider(requireActivity(),
+//            PageViewModelFactory(requireActivity().application, ApiClient.instance)
+//        )
+//            .get(RegisterViewModel::class.java)
     }
 
     @SuppressLint("ClickableViewAccessibility")

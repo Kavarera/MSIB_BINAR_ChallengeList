@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
-class RegisterViewModel(application:Application): ViewModel() {
+class RegisterViewModel(): ViewModel() {
     private val _username = MutableLiveData<String>()
     val username:LiveData<String> get()=_username
 

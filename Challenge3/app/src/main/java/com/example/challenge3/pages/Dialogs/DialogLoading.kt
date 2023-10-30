@@ -2,15 +2,11 @@ package com.example.challenge3.pages.Dialogs
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
-import com.example.challenge3.R
 import com.example.challenge3.databinding.FragmentDialogLoadingBinding
-import com.example.challenge3.databinding.FragmentDialogPesananBerhasilBinding
 
 class DialogLoading : DialogFragment() {
     private lateinit var binding:FragmentDialogLoadingBinding

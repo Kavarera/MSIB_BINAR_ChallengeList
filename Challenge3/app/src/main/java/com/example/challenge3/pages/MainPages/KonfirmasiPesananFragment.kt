@@ -10,18 +10,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge3.R
-import com.example.challenge3.util.viewmodelsfactory.PageViewModelFactory
 import com.example.challenge3.util.adapter.KeranjangRecyclerViewAdapter
 import com.example.challenge3.databinding.FragmentKonfirmasiPesananBinding
 import com.example.challenge3.pages.Dialogs.DialogPesananBerhasil
 import com.example.challenge3.models.enumclass.EnumMetodePembayaran
 import com.example.challenge3.models.enumclass.EnumMetodePengiriman
 import com.example.challenge3.models.FoodKeranjang
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.networking.Request.OrdersItem
 import com.example.challenge3.util.viewmodels.KeranjangViewModel
 import com.example.challenge3.util.viewmodels.KonfirmasiPesananViewModel
@@ -38,8 +35,6 @@ class KonfirmasiPesananFragment : Fragment() {
     private lateinit var adapter: KeranjangRecyclerViewAdapter
     private lateinit var pembayaran: LiveData<EnumMetodePembayaran>
     private lateinit var pengiriman: LiveData<EnumMetodePengiriman>
-
-    private lateinit var mappedListOrdersItem: LiveData<List<OrdersItem>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +64,7 @@ class KonfirmasiPesananFragment : Fragment() {
             item.forEach {
                 t = t+(it.quantity *it.harga)
             }
-            binding.tvHargaTotalPesanan.text="Rp. ${t.toString()}"
+            binding.tvHargaTotalPesanan.text="Rp. $t"
             adapter= KeranjangRecyclerViewAdapter(requireContext(),item,foodViewModel)
             recyclerView.adapter=adapter
             recyclerView.layoutManager=LinearLayoutManager(requireContext())

@@ -6,9 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,12 +20,7 @@ import com.example.challenge3.util.preferences.PreferencesHelper
 import com.example.challenge3.models.Food
 import com.example.challenge3.models.enumclass.EnumRecyclerViewOption
 import com.example.challenge3.models.enumclass.EnumStatus
-import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.viewmodels.MenuViewModel
-import com.example.challenge3.util.viewmodelsfactory.ApiViewModelFactory
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import org.koin.android.ext.android.inject
 

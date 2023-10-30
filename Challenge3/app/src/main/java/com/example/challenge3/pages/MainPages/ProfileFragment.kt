@@ -5,19 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.example.challenge3.R
 import com.example.challenge3.databinding.FragmentProfileBinding
 import com.example.challenge3.util.viewmodels.ProfileVIewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
+import org.koin.android.ext.android.inject
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding:FragmentProfileBinding
-    private val viewModel by viewModels<ProfileVIewModel>()
+    private val viewModel:ProfileVIewModel by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -13,7 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerCrop"
-        android:src="@color/teal_200" />
+        android:src="@color/teal_200"
+        android:importantForAccessibility="no" />
     <TextView
         android:id="@+id/tv_namaFood"
         app:layout_constraintStart_toEndOf="@id/iv_image"

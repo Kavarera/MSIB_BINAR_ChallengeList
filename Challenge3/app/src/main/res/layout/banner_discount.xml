@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_marginTop="10dp"
@@ -8,7 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@color/blackHalfOp"/>
+        android:src="@color/blackHalfOp"
+        android:importantForAccessibility="no" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -26,7 +28,8 @@
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.078" />
+            app:layout_constraintVertical_bias="0.078"
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/tv_disc30"
@@ -50,7 +53,7 @@
             android:textColor="@color/white"
             android:paddingEnd="170dp"
             android:layout_marginTop="15dp"
-            />
+            tools:ignore="RtlSymmetry" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

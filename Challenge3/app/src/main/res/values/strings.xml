@@ -64,6 +64,14 @@
     <string name="sign_out">Sign out</string>
     <string name="title_snackbar">Title Snackbar</string>
     <string name="loading">Loading</string>
+    <string name="food_detail_image">food detail image</string>
+    <string name="error_example_message">This is a description for texxt snackbar error, you can explain why errors occurs</string>
+    <string name="pesanan_berhasil2">Pesanan Berhasil</string>
+    <string name="kembali_ke_home">Kembali Ke Home</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="dompet_digital">Dompet Digital</string>
+    <string name="sate_ayam">Sate Ayam</string>
+    <string name="plus">+</string>
 
     <integer-array name="foto_makanan">
         <item>@color/black</item>
