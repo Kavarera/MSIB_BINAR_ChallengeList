@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
@@ -66,6 +67,7 @@ class RegisterViewModel(application:Application): ViewModel() {
                 }
             }
         } catch (e:Exception){
+            Firebase.crashlytics.recordException(e)
             Log.d("Firebase",e.message.toString())
         }
     }

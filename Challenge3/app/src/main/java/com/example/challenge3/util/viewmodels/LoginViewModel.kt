@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
 import com.example.challenge3.util.preferences.PreferencesHelper
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Deferred
@@ -83,6 +84,7 @@ class LoginViewModel(application: Application): ViewModel() {
             catch (e:Exception){
                 _IsLogin.postValue(false)
                 Log.d("Login",e.message.toString())
+                Firebase.crashlytics.recordException(e)
             }
         }
     }

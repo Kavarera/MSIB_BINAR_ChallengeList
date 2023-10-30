@@ -16,6 +16,8 @@ import com.example.challenge3.util.networking.Request.OrderRequest
 import com.example.challenge3.util.networking.Request.OrdersItem
 import com.example.challenge3.util.networking.Response.OrderResponse
 import com.example.challenge3.util.preferences.PreferencesHelper
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -57,6 +59,7 @@ class KonfirmasiPesananViewModel(private val api:ApiService,application:Applicat
                 _isSuccesfullySubmitOrder.postValue(oResponse.code==201)
             }catch (e:Exception){
                 Log.e("OorderPost",e.message.toString())
+                Firebase.crashlytics.recordException(e)
             }
         }
     }

@@ -9,6 +9,8 @@ import com.example.challenge3.models.enumclass.EnumListFragment
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.networking.ApiRetrofit.ApiService
 import com.example.challenge3.util.networking.Response.CategoryResponse
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,6 +46,8 @@ class MainActivityViewModel():ViewModel() {
             }
             catch (e:Exception){
                 Log.e("API",e.message.toString())
+                Firebase.crashlytics.recordException(e)
+
             }
         }
 //  Tanpa menggunakan kotlin coroutines jika tidak salah

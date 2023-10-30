@@ -8,6 +8,8 @@ import com.example.challenge3.database.dao.IFoodKeranjangDao
 import com.example.challenge3.models.FoodKeranjang
 import com.example.challenge3.util.Resource
 import com.example.challenge3.util.networking.ApiRetrofit.ApiService
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 import java.util.concurrent.ExecutorService
@@ -61,6 +63,7 @@ class MenuRepository(application: Application,private val apiService:ApiService)
             }
         }catch (e:Exception){
             emit(Resource.error(data=apiService.getAllFoods(), message = e.message?:"Error when getting all foods" ))
+            Firebase.crashlytics.recordException(e)
         }
     }
 
@@ -69,6 +72,7 @@ class MenuRepository(application: Application,private val apiService:ApiService)
             emit(Resource.success(data = apiService.getCategory2()))
         }catch (e:Exception){
             emit(Resource.error(data=null, message=e.message ?:"Error when getting all categories"))
+            Firebase.crashlytics.recordException(e)
         }
     }
 }

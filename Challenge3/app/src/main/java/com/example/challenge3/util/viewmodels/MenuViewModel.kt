@@ -11,6 +11,8 @@ import com.example.challenge3.util.Resource
 import com.example.challenge3.util.networking.ApiRetrofit.ApiClient
 import com.example.challenge3.util.networking.ApiRetrofit.ApiService
 import com.example.challenge3.util.networking.Response.CategoryResponse
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,6 +33,7 @@ class MenuViewModel(private val apiService: ApiService):ViewModel() {
                 emit(Resource.success(data=apiService.getAllFoods()))
             }
         }catch (e:Exception){
+            Firebase.crashlytics.recordException(e)
             emit(Resource.error(data=apiService.getAllFoods(), message = e.message?:"Error when getting all foods" ))
         }
     }
@@ -40,6 +43,7 @@ class MenuViewModel(private val apiService: ApiService):ViewModel() {
         try {
             emit(Resource.success(data = apiService.getCategory2()))
         }catch (e:Exception){
+            Firebase.crashlytics.recordException(e)
             emit(Resource.error(data=null, message=e.message ?:"Error when getting all categories"))
         }
     }

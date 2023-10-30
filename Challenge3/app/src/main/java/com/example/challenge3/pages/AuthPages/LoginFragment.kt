@@ -116,7 +116,6 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnLogin.setOnClickListener{
-
             if(!binding.etPasswordLogin.text.isNullOrEmpty() &&
                 !binding.etUsernameLogin.text.isNullOrEmpty()){
                 beforeNotif=true
