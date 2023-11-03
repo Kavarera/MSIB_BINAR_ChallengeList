@@ -34,7 +34,7 @@ object KoinModule {
     val Application.uiModule get()= module {
         viewModel { MenuViewModel(get()) }
         viewModel { KeranjangViewModel(get()) }
-        viewModel { KonfirmasiPesananViewModel(get(),get()) }
+        viewModel { KonfirmasiPesananViewModel(get()) }
         viewModel{LoginViewModel()}
         viewModel{RegisterViewModel()}
         viewModel { ProfileEditViewModel() }

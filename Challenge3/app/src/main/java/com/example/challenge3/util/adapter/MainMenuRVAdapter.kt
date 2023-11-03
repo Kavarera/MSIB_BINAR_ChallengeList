@@ -23,7 +23,6 @@ class MainMenuRVAdapter(private var c:Context,private var foods: List<Food>,layo
             Glide.with(c)
                 .load(item.imageUrl)
                 .into(binding.ivImage)
-//            binding.ivImage.setImageResource(item.imageId)
             binding.tvNamaFood.text=item.nama
             binding.tvHarga.text=item.hargaString
         }

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Challenge3</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hai_binarian">Hai Binarian</string>
     <string name="tombol_keranjang">Tombol Keranjang</string>
     <string name="mau_makan_apa_hari_ini">Mau makan apa hari ini?</string>
@@ -21,20 +20,17 @@
     <string name="_1">1</string>
     <string name="subtract">-</string>
     <string name="tambah_ke_keranjang_harga">Tambah Ke Keranjang - Harga</string>
-    <string name="riwayat">Riwayat</string>
     <string name="profile">Profile</string>
     <string name="keranjang">Keranjang</string>
     <string name="home">Home</string>
     <string name="tv_keranjang">Keranjang</string>
     <string name="contohHarga">Rp. 10.000</string>
     <string name="catatan">Catatan:</string>
-    <string name="tv_riwayat">Riwayat</string>
     <string name="pesan">Pesan</string>
     <string name="total_harga">Total Harga</string>
     <string name="tv_profile">Profile</string>
     <string name="no_telepon">No. Telepon</string>
     <string name="contoh_no_telepon">+62 878-0989-2132</string>
-    <string name="contoh_email">user@example.com</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="kavarera">kavarera</string>
@@ -49,14 +45,12 @@
     <string name="ambil_sendiri">Ambil Sendiri</string>
     <string name="dikirim">Dikirim</string>
     <string name="tunai">Tunai</string>
-    <string name="pesanan_berhasil">PESANAN BERHASIL</string>
     <string name="dont_have_an_account">Dont have an account?</string>
     <string name="register">Register</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="login">Login</string>
     <string name="empty_carts">Empty Carts</string>
     <string name="back_button">back button</string>
-    <string name="decrease_item">decrease item</string>
     <string name="confirmation">Confirmation</string>
     <string name="confirm">Confirm</string>
     <string name="input_your_old_password">Input Your Old Password</string>
@@ -72,30 +66,6 @@
     <string name="dompet_digital">Dompet Digital</string>
     <string name="sate_ayam">Sate Ayam</string>
     <string name="plus">+</string>
-
-    <integer-array name="foto_makanan">
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-        <item>@color/black</item>
-    </integer-array>
-    <string-array name="gmaps_url">
-        <item>https://maps.app.goo.gl/KggSzrdZ77yXWCmd7</item>
-        <item>https://maps.app.goo.gl/FVf28uYBDgUZbPc96</item>
-        <item>https://maps.app.goo.gl/beVfSSERa9G96DZi6</item>
-        <item>https://maps.app.goo.gl/VDuSyK3BFdvuy9Wt8</item>
-        <item>https://maps.app.goo.gl/1vQ47BCFPua9bu6f8</item>
-        <item>https://maps.app.goo.gl/aHu3oxmB5h5efko77</item>
-    </string-array>
 
 
 </resources>

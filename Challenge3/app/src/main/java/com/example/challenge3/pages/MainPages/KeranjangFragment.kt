@@ -23,10 +23,6 @@ class KeranjangFragment : Fragment() {
     private lateinit var adapter: KeranjangRecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Viewmodel
-//        val viewModelFactory = PageViewModelFactory(requireActivity().application,
-//            ApiClient.instance)
-//        foodViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(KeranjangViewModel::class.java)
         listPesanan=foodViewModel.getAllFoods()
     }
 
@@ -53,10 +49,9 @@ class KeranjangFragment : Fragment() {
             recyclerView.visibility=View.VISIBLE
             binding.ivEmptyCart.visibility=View.GONE
 
-            var totalPrice:Int = 0
+            var totalPrice = 0
             item.forEach {
-                var t =0
-                t = it.quantity * it.harga
+                val t = it.quantity * it.harga
                 totalPrice +=t
             }
             binding.tvTotalHargaPesanan.text="Rp. $totalPrice"
@@ -68,9 +63,6 @@ class KeranjangFragment : Fragment() {
         binding.btnPesan.setOnClickListener {
             findNavController().navigate(R.id.action_keranjangFragment_to_konfirmasiPesananFragment)
         }
-
-
-        // Inflate the layout for this fragment
         return binding.root
     }
 

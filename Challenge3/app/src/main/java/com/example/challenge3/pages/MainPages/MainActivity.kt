@@ -80,7 +80,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> println("Error No Fragment")
         }
-        //supportFragmentManager.beginTransaction().replace(R.id.fragContainer,fragment).commit()
     }
 
 }

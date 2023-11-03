@@ -27,12 +27,7 @@ class LoginFragment : Fragment() {
     var beforeNotif = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         mainViewModel.setVisibleBottomNav(false)
-//        viewModel = ViewModelProvider(
-//            requireActivity(),
-//            PageViewModelFactory(requireActivity().application, ApiClient.instance)
-//            ).get(LoginViewModel::class.java)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -100,8 +95,6 @@ class LoginFragment : Fragment() {
             }
             else{
                 if(beforeNotif){
-//                    Toast.makeText(requireContext(),
-//                        "Invalid credentials",Toast.LENGTH_LONG).show()
 
                     ShowSnackbarCustom("Invalid Credentials","Login Failed", 400,requireView())
 

@@ -35,10 +35,8 @@ class MenuFragment : Fragment() {
     private var testingAPIFoodCategories:List<CategoryFoodData>? = null
 
     private lateinit var rv:RecyclerView
-    private lateinit var adapter:MainMenuRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        viewModel = ViewModelProvider(requireActivity(),ApiViewModelFactory(ApiClient.instance)).get(MenuViewModel::class.java)
 
 
     }
@@ -48,8 +46,6 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMenuBinding.inflate(inflater,container,false)
         rv=binding.rvMenuMakanan
-//        val rv = binding.rvMenuMakanan
-        //val mySharedPreferences =  PreferencesHelper.getInstance(requireContext())
 
         fetchCategoriesData()
         fetchFoods()
@@ -226,13 +222,6 @@ class MenuFragment : Fragment() {
                 EnumStatus.SUCCESS->{
                     foodListAPI = data.data?.data!!
                     foodList=data.data.data
-//                    for(i in data.data.data){
-//                        foodList.add(Food(id=i.id,
-//                            Name = i.nama, description = i.detail, imageId = i.imageUrl,
-//                            Price = i.harga.toString(), location = i.alamatResto,
-//                            urlLocation = "maps.google.com"))
-//                    }
-
                     binding.ibGridOption.performClick()
                     binding.ibGridOption.performClick()
 

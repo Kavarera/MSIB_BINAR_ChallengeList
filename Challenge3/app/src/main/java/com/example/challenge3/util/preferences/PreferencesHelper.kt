@@ -36,8 +36,4 @@ object PreferencesHelper {
             User.fromJson(it)
         }
     }
-    fun clearUser() {
-        prefs.edit()
-            .remove(KEY_APP_USER).apply()
-    }
 }

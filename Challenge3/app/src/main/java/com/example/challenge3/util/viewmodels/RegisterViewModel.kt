@@ -1,19 +1,16 @@
 package com.example.challenge3.util.viewmodels
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 class RegisterViewModel(): ViewModel() {
@@ -24,9 +21,6 @@ class RegisterViewModel(): ViewModel() {
     val password:LiveData<String> get()=_password
     private val _email = MutableLiveData<String>()
     val email:LiveData<String> get()=_email
-
-    private val _telepon = MutableLiveData<String>()
-    val telepon:LiveData<String> get()=_telepon
 
     private val _isRegister = MutableLiveData<Boolean>()
     val isRegister get() = _isRegister

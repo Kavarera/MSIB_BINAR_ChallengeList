@@ -12,8 +12,6 @@ import retrofit2.http.Query
 
 interface ApiService {
     //untuk mapping Endpoint API
-    @GET("category")
-    fun getCategory():Call<CategoryResponse>
 
     @GET("category")
     suspend fun getCategory2():CategoryResponse

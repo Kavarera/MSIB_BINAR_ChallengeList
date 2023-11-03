@@ -6,17 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.challenge3.models.User
-import com.google.firebase.auth.EmailAuthCredential
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import java.lang.Exception
+
 
 class ProfileEditViewModel:ViewModel() {
 
@@ -59,7 +55,6 @@ class ProfileEditViewModel:ViewModel() {
                 }
 
         }
-
     }
         fun updateAuthPassword(old: User,new:User,oldPassword:String,newPassword:String){
             viewModelScope.launch(Dispatchers.IO) {

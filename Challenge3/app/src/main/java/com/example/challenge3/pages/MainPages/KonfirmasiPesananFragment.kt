@@ -38,13 +38,6 @@ class KonfirmasiPesananFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        keranjangViewModel=ViewModelProvider(requireActivity(),
-//            PageViewModelFactory(requireActivity().application,ApiClient.instance)
-//        )
-//            .get(KonfirmasiPesananViewModel::class.java)
-
-//        mainViewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         mainViewModel.setVisibleBottomNav(false)
 
     }
@@ -92,7 +85,7 @@ class KonfirmasiPesananFragment : Fragment() {
 
                 Log.d("pesanan",mappedListPesanan.value.toString())
 
-                val response = keranjangViewModel.sendOrder(requireContext(),
+                val response = keranjangViewModel.sendOrder(
                     mappedListPesanan.value,total)
 
 

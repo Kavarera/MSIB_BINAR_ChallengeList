@@ -23,12 +23,11 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentProfileBinding.inflate(inflater,container,false)
-        viewModel.getUserData(requireContext())
+        viewModel.getUserData()
 
 
         viewModel.User.observe(viewLifecycleOwner){
             binding.etUsernameProfile.setText(it?.username)
-            //binding.etEmailProfile.setText(it?.email)
             binding.etTeleponProfile.setText(it?.telepon)
         }
 
@@ -46,6 +45,6 @@ class ProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getUserData(requireContext())
+        viewModel.getUserData()
     }
 }

@@ -21,9 +21,6 @@ class FoodDetailActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        val viewModelFactory = PageViewModelFactory(this.application, ApiClient.instance)
-//        foodViewModel = ViewModelProvider(this,viewModelFactory).get(KeranjangViewModel::class.java)
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
         val foodData: Food = intent.getParcelableExtra("data")!!
 
@@ -35,7 +32,6 @@ class FoodDetailActivity : AppCompatActivity() {
             .load(foodData.imageUrl)
             .centerCrop()
             .into(binding.ivFoodDetailImage)
-//        binding.flFoodDetailImage.setBackgroundResource(foodData.imageId)
         binding.tvTotalItem.text=foodDetailViewModel.totalItem.toString()
 
         binding.btnAddItem.setOnClickListener {
@@ -59,8 +55,6 @@ class FoodDetailActivity : AppCompatActivity() {
                 quantity = totalitem,
                 totalPrice = totalPrice,
             )
-//            val foodKeranjang = FoodKeranjang(0,foodData.Name,foodData.imageId,foodData.Price.toInt(),
-//                totalitem,totalPrice,"No Note"
 //            )
             foodViewModel.insertFood(foodKeranjang)
 

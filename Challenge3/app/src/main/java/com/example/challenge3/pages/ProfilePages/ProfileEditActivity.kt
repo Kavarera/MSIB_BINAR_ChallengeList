@@ -24,15 +24,12 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         super.onCreate(savedInstanceState)
         var loadingFragment = false
         binding=ActivityProfileEditBinding.inflate(layoutInflater)
-//        user = PreferencesHelper.getInstance(this)
-//            .getUser()
         user = PreferencesHelper.getUser()
 
         dialogLoading= DialogLoading()
 
         binding.etUsernameProfileEditmode.setText(user?.username)
         binding.etTeleponProfileEditmode.setText(user?.telepon)
-        //binding.etEmailEditmode.setText(user?.email)
 
         binding.ibCancelEditProfile.setOnClickListener {
             finish()
@@ -57,7 +54,6 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
                     val newUser = User(user!!.username,user!!.email,user!!.telepon)
                     newUser.username=binding.etUsernameProfileEditmode.text.toString()
                     newUser.telepon=binding.etTeleponProfileEditmode.text.toString()
-//                    PreferencesHelper.getInstance(this).saveUser(newUser)
                     PreferencesHelper.saveUser(newUser)
                     dialogLoading.removeDialog()
                     finish()
@@ -105,10 +101,6 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
             viewModel.updateAuthPassword(user!!,newUser,oldPassword,
                 binding.etPasswordEditmode.text.toString())
         }
-//        if(binding.etEmailEditmode.text.toString()!=user!!.email){
-//            Log.d("profile edit","Updating email ${user!!.email} -----> ${newUser.email}")
-//            viewModel.updateAuthEmail(user!!,newUser,oldPassword)
-//        }
 
     }
 
@@ -122,9 +114,6 @@ class ProfileEditActivity : AppCompatActivity(),DialogReauthenticateListener {
         super.onPause()
         viewModel.isUpdate.observe(this){
                 Log.d("onPause",it.toString())
-            if(it!=2){
-                //dialogLoading.removeDialog()
-            }
         }
     }
 }

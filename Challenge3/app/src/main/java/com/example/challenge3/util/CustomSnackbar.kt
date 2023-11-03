@@ -1,26 +1,16 @@
 package com.example.challenge3.util
 
-import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.updateLayoutParams
 import com.example.challenge3.R
 import com.example.challenge3.databinding.CustomSnackbarBinding
 import com.google.android.material.snackbar.Snackbar
 
 fun ShowSnackbarCustom(message:String?, title:String, type:Int, view:View){
     val snackbar = Snackbar.make(view,"",Snackbar.LENGTH_LONG)
-
-
-//    snackbar.view.updateLayoutParams<CoordinatorLayout.LayoutParams> {
-//        gravity = Gravity.TOP
-//    }
 
     val customSnackbarBinding = snackbar.view as? Snackbar.SnackbarLayout
     customSnackbarBinding?.setPadding(0,0,0,0)

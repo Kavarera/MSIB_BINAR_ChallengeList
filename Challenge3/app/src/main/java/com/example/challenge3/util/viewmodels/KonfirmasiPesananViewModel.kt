@@ -1,6 +1,6 @@
 package com.example.challenge3.util.viewmodels
 
-import android.content.Context
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,8 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananRepository,
-                                 private val repository: FoodKeranjangRepository
+class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananRepository
 ):ViewModel() {
     private val _pengiriman = MutableLiveData<EnumMetodePengiriman>()
     val pengiriman : LiveData<EnumMetodePengiriman> get() = _pengiriman
@@ -33,7 +32,7 @@ class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananReposi
         _pembayaran.value= EnumMetodePembayaran.TUNAI
     }
 
-    fun sendOrder(context: Context, foods:List<OrdersItem>?, total:Int){
+    fun sendOrder(foods:List<OrdersItem>?, total:Int){
         viewModelScope.launch(Dispatchers.IO){
             try {
                 val user = PreferencesHelper.getUser()
@@ -42,9 +41,6 @@ class KonfirmasiPesananViewModel(private val kpRepository:KeranjangPesananReposi
                 )
 
                 val oResponse=kpRepository.postOrder(orderRequest)
-
-//                val response = api.postOrder(orderRequest).execute()
-//                oResponse = response.body() as OrderResponse
                 if(oResponse.code==201){
                     Log.d("OrderPost","Success Post Order")
                 }
