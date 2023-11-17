@@ -27,11 +27,34 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    flavorDimensions 'binarCafe'
+
+    productFlavors{
+        free {
+            dimension 'binarCafe'
+            versionNameSuffix '.free'
+        }
+        premium {
+            dimension 'binarCafe'
+            versionNameSuffix '.premium'
+        }
+    }
+
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        qa {
+            minifyEnabled false
+            debuggable true
+        }
+
+        development {
+            minifyEnabled false
+            debuggable true
         }
     }
 
