@@ -24,6 +24,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        buildConfigField("String","API_URL",'\"https://192e8d21-8c33-437f-8011-83aab75d4ed0.mock.pstmn.io/\"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -124,5 +125,9 @@ dependencies {
     implementation ("io.insert-koin:koin-android-compat:3.3.0")
     implementation ("io.insert-koin:koin-androidx-workmanager:3.3.0")
     implementation ("io.insert-koin:koin-androidx-navigation:3.3.0")
+
+    //google test
+    androidTestImplementation("com.google.truth:truth:1.1.5")
+    testImplementation("com.google.truth:truth:1.1.5")
 
 }
